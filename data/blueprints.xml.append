@@ -1,312 +1,348 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<FTL>
+	
+<!--@author Bennett Moore-->
+	
+	
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+								CREW
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
 
-<crewBlueprint name="scav">
-	<desc>Insert Description Here</desc>
-	<cost>50</cost> <!--was 40-->
-	<bp>2</bp>
-	<title>Scavenger</title>
-	<short>Scav</short>
-	<rarity>2</rarity>
-	<powerList>
-		<power id="crew_engi_power_1" />
-		<power id="crew_engi_power_2" />
-	</powerList>
-	<colorList>
-		<layer><!-- Layer 1 - Shirt -->
-			<color r="245" g="179" b="66" a="0.8" /> 
-			<color r="200" g="87" b="84" a="0.5" />
-			<color r="0" g="100" b="100" a="0.25" />
-			<color r="262" g="100" b="100" a="0.5" />
-		</layer>
-		<layer><!-- Layer 2 - Hair/Face -->
-			<color r="245" g="100" b="100" a="0.25" />
-			<color r="194" g="61" b="85" a="0.25" />
-			<color r="280" g="61" b="85" a="0.3" />
-			<color r="240" g="100" b="55" a="0.25" />
-		</layer>
-	</colorList>
-</crewBlueprint>
+	<crewBlueprint name="scav">
+		<desc>Insert Description Here</desc>	<!--TODO: Write Scav Description-->
+		<cost>50</cost>
+		<bp>2</bp>
+		<title>Scavenger</title>
+		<short>Scav</short>
+		<rarity>2</rarity>
+		<powerList>								<!--TODO: Remove Engi Power-->
+			<power id="crew_engi_power_1" />
+			<power id="crew_engi_power_2" />
+		</powerList>
+		<colorList>
+			<layer><!-- Layer 1 - Clothes -->
+				<color r="245" g="179" b="66" a="0.8" /> 
+				<color r="200" g="87" b="84" a="0.5" />
+				<color r="0" g="100" b="100" a="0.25" />
+				<color r="262" g="100" b="100" a="0.5" />
+			</layer>
+			<layer><!-- Layer 2 - Body -->
+				<color r="245" g="100" b="100" a="0.25" />
+				<color r="194" g="61" b="85" a="0.25" />
+				<color r="280" g="61" b="85" a="0.3" />
+				<color r="240" g="100" b="55" a="0.25" />
+			</layer>
+		</colorList>
+	</crewBlueprint>
+	
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+								SHIPS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
 
-<shipBlueprint name="PLAYER_SHIP_JUNK" layout="fed_junkyard" img="fed_junkyard">
-	<class>Federation "Junkyard"</class>
-	<name>The Dolea</name>
-	<desc>"Desperation breeds innovation" is a perfect way to describe the Federation Reclaimer, known better as the "Junkyard". It's equipped with a Scrap Recovery Arm to help the crew purchase better parts for it, and an additional drone slot.</desc>
-	<unlock id="ship_PLAYER_SHIP_JUNK_unlock" />
-	<systemList>
-		<battery power="1" room="17" start="false" img="room_battery" />
-		<cloaking power="1" room="14" start="false" img="room_cloaking_9" />
-		<clonebay power="1" room="7" start="false">
-			<slot>
-				<number>1</number>
-			</slot>
-		</clonebay>
-		<doors power="1" room="6" start="true" img="room_doors">
-			<slot>
-				<direction>up</direction>
-				<number>1</number>
-			</slot>
-		</doors>
-		<drones power="2" room="2" start="false" img="room_drones_4" />
-		<engines power="2" room="8" start="true" img="room_engines">
-			<slot>
-				<direction>down</direction>
-				<number>2</number>
-			</slot>
-		</engines>
-		<hacking power="1" room="1" start="false" img="room_hacking_6" />
-		<medbay power="1" room="7" start="true" img="room_medbay_3">
-			<slot>
-				<number>3</number>
-			</slot>
-		</medbay>
-		<mind power="1" room="16" start="false" img="room_mind_1" />
-		<oxygen power="1" room="15" start="true" img="room_oxygen_8" />
-		<pilot power="1" room="0" start="true" img="room_pilot">
-			<slot>
-				<direction>right</direction>
-				<number>0</number>
-			</slot>
-		</pilot>
-		<sensors power="1" room="10" start="true" img="room_sensors_2">
-			<slot>
-				<direction>up</direction>
-				<number>0</number>
-			</slot>
-		</sensors>
-		<shields power="2" room="9" start="true" img="room_shields_3">
-			<slot>
-				<direction>left</direction>
-				<number>2</number>
-			</slot>
-		</shields>
-		<teleporter power="1" room="12" start="false" />
-		<weapons power="2" room="4" start="true" img="room_weapons_8">
-			<slot>
-				<direction>up</direction>
-				<number>1</number>
-			</slot>
-		</weapons>
-	</systemList>
-	<weaponSlots>4</weaponSlots>
-	<droneSlots>3</droneSlots>
-	<weaponList missiles="0" count="4">
-		<weapon name="LASER_BURST_2" />
-		<weapon name="ION_1" />
-	</weaponList>
-	<health amount="30" />
-	<maxPower amount="8" />
-	<crewCount amount="1" class="human" />
-	<crewCount amount="1" class="human" />
-	<crewCount amount="1" class="human" />
-	<aug name="SCRAP_COLLECTOR" />
-</shipBlueprint>
-<droneBlueprint name="COMBAT_0">
-	<type>COMBAT</type>
-	<tip>tip_combat</tip>
-	<title>Makeshift Combat Drone</title>
-	<short>Combat 0</short>
-	<desc id="drone_COMBAT_1_desc" />
-	<power>1</power>
-	<cooldown>1000</cooldown>
-	<!-- Doesn't affect combat drone -->
-	<dodge>0</dodge>
-	<speed>12</speed>
-	<!-- Change this to increase/decrease firing speed -->
-	<!-- was 20-->
-	<cost>30</cost>
-	<bp>3</bp>
-	<droneImage>drone_combat_0</droneImage>
-	<weaponBlueprint>DRONE_LASER</weaponBlueprint>
-	<rarity>0</rarity>
-	<iconImage>combat</iconImage>
-</droneBlueprint>
-<droneBlueprint name="DEFENSE_0">
-	<type>DEFENSE</type>
-	<level>1</level>
-	<tip>tip_defense</tip>
-	<title>Makeshift Defense Drone</title>
-	<short>Defense 0</short>
-	<desc id="drone_DEFENSE_1_desc" />
-	<power>1</power>
-	<cooldown>4500</cooldown>
-	<!-- Shooting cooldown for shooting at asteroids/missiles, in ms -->
-	<dodge>0</dodge>
-	<speed>8</speed>
-	<!-- Superficial change.. just makes it fly faster -->
-	<cost>30</cost>
-	<bp>2</bp>
-	<droneImage>drone_defense_0</droneImage>
-	<!-- WEAPON INFO -->
-	<weaponBlueprint>DRONE_LASER</weaponBlueprint>
-	<iconImage>defense</iconImage>
-	<!-- -->
-	<rarity>0</rarity>
-</droneBlueprint>
-<droneBlueprint name="ADMIN_DRONE">
-	<type>SHIELD</type>
-	<level>1</level>
-	<tip>tip_defense</tip>
-	<title>Administrator Drone</title>
-	<short>Admin</short>
-	<desc>Augmented Shield Drone that can manage other drones more fficiently</desc>
-	<power>-4</power>
-	<cooldown>50000</cooldown>
-	<!-- cooldown for recharge, in ms -->
-	<dodge>0</dodge>
-	<speed>12</speed>
-	<!-- Superficial change.. just makes it fly faster -->
-	<cost>80</cost>
-	<bp>2</bp>
-	<droneImage>drone_shield</droneImage>
-	<rarity>5</rarity>
-	<iconImage>shield</iconImage>
-</droneBlueprint>
-<shipBlueprint name="PLAYER_SHIP_JUNK_2" layout="fed_junkyard_2" img="fed_junkyard_2">
-	<class>Federation "Junkyard"</class>
-	<name>The Scrap Heap</name>
-	<desc>The scavengers who built this ship may have struggled to find some basic systems to install, but this model compensates with truly unmatched drone launch and recovery capabilities, and additional unique drones.</desc>
-	<systemList>
-		<battery power="1" room="4" start="false" img="room_battery_3" />
-		<cloaking power="1" room="7" start="false" img="room_cloaking_6" />
-		<clonebay power="1" room="9" start="false">
-			<slot>
-				<number>1</number>
-			</slot>
-		</clonebay>
-		<doors power="1" room="3" start="false" img="room_doors_2">
-			<slot>
-				<direction>down</direction>
-				<number>0</number>
-			</slot>
-		</doors>
-		<drones power="2" room="5" start="true" img="room_drones" />
-		<engines power="2" room="1" start="true" img="room_engines">
-			<slot>
-				<direction>down</direction>
-				<number>2</number>
-			</slot>
-		</engines>
-		<hacking power="1" room="11" start="false" img="room_hacking" />
-		<medbay power="1" room="9" start="true" img="room_medbay">
-			<slot>
-				<number>1</number>
-			</slot>
-		</medbay>
-		<mind power="1" room="14" start="false" img="room_mind" />
-		<oxygen power="1" room="15" start="true" img="room_oxygen_11" />
-		<pilot power="1" room="0" start="true" img="room_pilot">
-			<slot>
-				<direction>right</direction>
-				<number>0</number>
-			</slot>
-		</pilot>
-		<sensors power="1" room="10" start="true" img="room_sensors_2">
-			<slot>
-				<direction>up</direction>
-				<number>0</number>
-			</slot>
-		</sensors>
-		<shields power="1" room="2" start="true" img="room_shields">
-			<slot>
-				<direction>left</direction>
-				<number>0</number>
-			</slot>
-		</shields>
-		<teleporter power="1" room="8" start="false" />
-		<weapons power="2" room="6" start="false" img="room_weapons_7">
-			<slot>
-				<direction>up</direction>
-				<number>1</number>
-			</slot>
-		</weapons>
-	</systemList>
-	<weaponSlots>2</weaponSlots>
-	<droneSlots>6</droneSlots>
-	<weaponList missiles="0" count="2" />
-	<droneList drones="20" count="6">
-		<drone name="ADMIN_DRONE" />
-		<drone name="DEFENSE_0" />
-		<drone name="COMBAT_0" />
-		<drone name="COMBAT_0" />
-	</droneList>
-	<health amount="30" />
-	<maxPower amount="6" />
-	<crewCount amount="1" class="scav" />
-	<crewCount amount="1" class="engi" />
-	<aug name="DRONE_RECOVERY" />
-</shipBlueprint>
-<shipBlueprint name="PLAYER_SHIP_JUNK_3" layout="fed_junkyard_3" img="fed_junkyard_3">
-	<class>Federation "Junkyard"</class>
-	<name>Model N</name>
-	<desc>This ship is built to minimize ship damage in order to harvest better parts for ship-building.</desc>
-	<systemList>
-		<battery power="1" room="13" start="false" img="room_battery" />
-		<cloaking power="1" room="16" start="false" img="room_cloaking" />
-		<clonebay power="1" room="3" start="true">
-			<slot>
-				<number>1</number>
-			</slot>
-		</clonebay>
-		<doors power="1" room="25" start="true" img="room_doors_2">
-			<slot>
-				<direction>down</direction>
-				<number>0</number>
-			</slot>
-		</doors>
-		<drones power="3" room="17" start="true" img="room_drones_12" />
-		<engines power="1" room="11" start="true" img="room_engines_9">
-			<slot>
-				<direction>up</direction>
-				<number>1</number>
-			</slot>
-		</engines>
-		<hacking power="1" room="18" start="false" img="room_hacking_6" />
-		<medbay power="1" room="3" start="false" img="room_medbay">
-			<slot>
-				<number>1</number>
-			</slot>
-		</medbay>
-		<mind power="1" room="8" start="false" img="room_mind_5" />
-		<oxygen power="1" room="1" start="true" img="room_oxygen_2" />
-		<pilot power="1" room="4" start="true" img="room_pilot_4">
-			<slot>
-				<direction>right</direction>
-				<number>0</number>
-			</slot>
-		</pilot>
-		<sensors power="1" room="14" start="true" img="room_sensors">
-			<slot>
-				<direction>down</direction>
-				<number>1</number>
-			</slot>
-		</sensors>
-		<shields power="2" room="23" start="true" img="room_shields_8">
-			<slot>
-				<direction>left</direction>
-				<number>0</number>
-			</slot>
-		</shields>
-		<teleporter power="1" room="24" start="true" />
-		<weapons power="2" room="22" start="true" img="room_weapons_4">
-			<slot>
-				<direction>up</direction>
-				<number>0</number>
-			</slot>
-		</weapons>
-	</systemList>
-	<weaponSlots>4</weaponSlots>
-	<droneSlots>4</droneSlots>
-	<weaponList missiles="15" count="4">
-		<weapon name="ION_STUN" />
-		<weapon name="LASER_BURST_1" />
-	</weaponList>
-	<droneList drones="10" count="4">
-		<drone name="BOARDER" />
-	</droneList>
-	<health amount="30" />
-	<maxPower amount="8" />
-	<crewCount amount="1" class="scav" />
-	<crewCount amount="1" class="human" />
-	<crewCount amount="2" class="mantis" />
-</shipBlueprint>
+	<shipBlueprint name="PLAYER_SHIP_JUNK" layout="fed_junkyard" img="fed_junkyard">		<!--Junkyard A-->
+		<class>Federation "Junkyard"</class>
+		<name>The Dolea</name>
+		<desc>"Desperation breeds innovation" is a perfect way to describe the Federation Reclaimer, known better as the "Junkyard". It's equipped with a Scrap Recovery Arm to help the crew purchase better parts for it, and an additional drone slot.</desc>
+		<unlock id="ship_PLAYER_SHIP_JUNK_unlock" />
+		<systemList>
+			<battery power="1" room="17" start="false" img="room_battery" />
+			<cloaking power="1" room="14" start="false" img="room_cloaking_9" />
+			<clonebay power="1" room="7" start="false">
+				<slot>
+					<number>1</number>
+				</slot>
+			</clonebay>
+			<doors power="1" room="6" start="true" img="room_doors">
+				<slot>
+					<direction>up</direction>
+					<number>1</number>
+				</slot>
+			</doors>
+			<drones power="2" room="2" start="false" img="room_drones_4" />
+			<engines power="2" room="8" start="true" img="room_engines">
+				<slot>
+					<direction>down</direction>
+					<number>2</number>
+				</slot>
+			</engines>
+			<hacking power="1" room="1" start="false" img="room_hacking_6" />
+			<medbay power="1" room="7" start="true" img="room_medbay_3">
+				<slot>
+					<number>3</number>
+				</slot>
+			</medbay>
+			<mind power="1" room="16" start="false" img="room_mind_1" />
+			<oxygen power="1" room="15" start="true" img="room_oxygen_8" />
+			<pilot power="1" room="0" start="true" img="room_pilot">
+				<slot>
+					<direction>right</direction>
+					<number>0</number>
+				</slot>
+			</pilot>
+			<sensors power="1" room="10" start="true" img="room_sensors_2">
+				<slot>
+					<direction>up</direction>
+					<number>0</number>
+				</slot>
+			</sensors>
+			<shields power="2" room="9" start="true" img="room_shields_3">
+				<slot>
+					<direction>left</direction>
+					<number>2</number>
+				</slot>
+			</shields>
+			<teleporter power="1" room="12" start="false" />
+			<weapons power="2" room="4" start="true" img="room_weapons_8">
+				<slot>
+					<direction>up</direction>
+					<number>1</number>
+				</slot>
+			</weapons>
+		</systemList>
+		<weaponSlots>4</weaponSlots>
+		<droneSlots>3</droneSlots>
+		<weaponList missiles="0" count="4">
+			<weapon name="LASER_BURST_2" />
+			<weapon name="ION_1" />
+		</weaponList>
+		<health amount="30" />
+		<maxPower amount="8" />
+		<crewCount amount="1" class="human" />
+		<crewCount amount="1" class="human" />
+		<crewCount amount="1" class="human" />
+		<aug name="SCRAP_COLLECTOR" />
+	</shipBlueprint>
+	
+	<shipBlueprint name="PLAYER_SHIP_JUNK_2" layout="fed_junkyard_2" img="fed_junkyard_2">
+		<class>Federation "Junkyard"</class>
+		<name>The Scrap Heap</name>
+		<desc>The scavengers who built this ship may have struggled to find some basic systems to install, but this model compensates with truly unmatched drone launch and recovery capabilities, and additional unique drones.</desc>
+		<systemList>
+			<battery power="1" room="4" start="false" img="room_battery_3" />
+			<cloaking power="1" room="7" start="false" img="room_cloaking_6" />
+			<clonebay power="1" room="9" start="false">
+				<slot>
+					<number>1</number>
+				</slot>
+			</clonebay>
+			<doors power="1" room="3" start="false" img="room_doors_2">
+				<slot>
+					<direction>down</direction>
+					<number>0</number>
+				</slot>
+			</doors>
+			<drones power="2" room="5" start="true" img="room_drones" />
+			<engines power="2" room="1" start="true" img="room_engines">
+				<slot>
+					<direction>down</direction>
+					<number>2</number>
+				</slot>
+			</engines>
+			<hacking power="1" room="11" start="false" img="room_hacking" />
+			<medbay power="1" room="9" start="true" img="room_medbay">
+				<slot>
+					<number>1</number>
+				</slot>
+			</medbay>
+			<mind power="1" room="14" start="false" img="room_mind" />
+			<oxygen power="1" room="15" start="true" img="room_oxygen_11" />
+			<pilot power="1" room="0" start="true" img="room_pilot">
+				<slot>
+					<direction>right</direction>
+					<number>0</number>
+				</slot>
+			</pilot>
+			<sensors power="1" room="10" start="true" img="room_sensors_2">
+				<slot>
+					<direction>up</direction>
+					<number>0</number>
+				</slot>
+			</sensors>
+			<shields power="1" room="2" start="true" img="room_shields">
+				<slot>
+					<direction>left</direction>
+					<number>0</number>
+				</slot>
+			</shields>
+			<teleporter power="1" room="8" start="false" />
+			<weapons power="2" room="6" start="false" img="room_weapons_7">
+				<slot>
+					<direction>up</direction>
+					<number>1</number>
+				</slot>
+			</weapons>
+		</systemList>
+		<weaponSlots>2</weaponSlots>
+		<droneSlots>6</droneSlots>
+		<weaponList missiles="0" count="2" />
+		<droneList drones="20" count="6">
+			<drone name="ADMIN_DRONE" />
+			<drone name="DEFENSE_0" />
+			<drone name="COMBAT_0" />
+			<drone name="COMBAT_0" />
+		</droneList>
+		<health amount="30" />
+		<maxPower amount="6" />
+		<crewCount amount="1" class="scav" />
+		<crewCount amount="1" class="engi" />
+		<aug name="DRONE_RECOVERY" />
+	</shipBlueprint>
+	<shipBlueprint name="PLAYER_SHIP_JUNK_3" layout="fed_junkyard_3" img="fed_junkyard_3">
+		<class>Federation "Junkyard"</class>
+		<name>Model N</name>
+		<desc>This ship is built to minimize ship damage in order to harvest better parts for ship-building.</desc>
+		<systemList>
+			<battery power="1" room="13" start="false" img="room_battery" />
+			<cloaking power="1" room="16" start="false" img="room_cloaking" />
+			<clonebay power="1" room="3" start="true">
+				<slot>
+					<number>1</number>
+				</slot>
+			</clonebay>
+			<doors power="1" room="25" start="true" img="room_doors_2">
+				<slot>
+					<direction>down</direction>
+					<number>0</number>
+				</slot>
+			</doors>
+			<drones power="3" room="17" start="true" img="room_drones_12" />
+			<engines power="1" room="11" start="true" img="room_engines_9">
+				<slot>
+					<direction>up</direction>
+					<number>1</number>
+				</slot>
+			</engines>
+			<hacking power="1" room="18" start="false" img="room_hacking_6" />
+			<medbay power="1" room="3" start="false" img="room_medbay">
+				<slot>
+					<number>1</number>
+				</slot>
+			</medbay>
+			<mind power="1" room="8" start="false" img="room_mind_5" />
+			<oxygen power="1" room="1" start="true" img="room_oxygen_2" />
+			<pilot power="1" room="4" start="true" img="room_pilot_4">
+				<slot>
+					<direction>right</direction>
+					<number>0</number>
+				</slot>
+			</pilot>
+			<sensors power="1" room="14" start="true" img="room_sensors">
+				<slot>
+					<direction>down</direction>
+					<number>1</number>
+				</slot>
+			</sensors>
+			<shields power="2" room="23" start="true" img="room_shields_8">
+				<slot>
+					<direction>left</direction>
+					<number>0</number>
+				</slot>
+			</shields>
+			<teleporter power="1" room="24" start="true" />
+			<weapons power="2" room="22" start="true" img="room_weapons_4">
+				<slot>
+					<direction>up</direction>
+					<number>0</number>
+				</slot>
+			</weapons>
+		</systemList>
+		<weaponSlots>4</weaponSlots>
+		<droneSlots>4</droneSlots>
+		<weaponList missiles="15" count="4">
+			<weapon name="ION_STUN" />
+			<weapon name="LASER_BURST_1" />
+		</weaponList>
+		<droneList drones="10" count="4">
+			<drone name="BOARDER" />
+		</droneList>
+		<health amount="30" />
+		<maxPower amount="8" />
+		<crewCount amount="1" class="scav" />
+		<crewCount amount="1" class="human" />
+		<crewCount amount="2" class="mantis" />
+	</shipBlueprint>
+	
+		
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+								DRONES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+	
+	<!--Worse variant of Combat Drone. Only fast enough to break 1 shield layer-->
+	
+	<droneBlueprint name="COMBAT_0">	
+		<type>COMBAT</type>
+		<tip>tip_combat</tip>
+		<title>Makeshift Combat Drone</title>
+		<short>Combat 0</short>
+		<desc id="drone_COMBAT_1_desc" />
+		<power>1</power>
+		<cooldown>1000</cooldown>
+		<!-- Doesn't affect combat drone -->
+		<dodge>0</dodge>
+		<speed>12</speed>
+		<!-- Change this to increase/decrease firing speed -->
+		<!-- was 20-->
+		<cost>30</cost>
+		<bp>3</bp>
+		<droneImage>drone_combat_0</droneImage>
+		<weaponBlueprint>DRONE_LASER</weaponBlueprint>
+		<iconImage>combat</iconImage>
+		<rarity>0</rarity>	<!--N/A-->
+	</droneBlueprint>
+	
+	
+	<!--Worse variant of Defense Drone. -->
+	
+	<droneBlueprint name="DEFENSE_0">	
+		<type>DEFENSE</type>
+		<level>1</level>
+		<tip>tip_defense</tip>
+		<title>Makeshift Defense Drone</title>
+		<short>Defense 0</short>
+		<desc id="drone_DEFENSE_1_desc" />
+		<power>1</power>
+		<cooldown>4500</cooldown>		<!--TODO: Fiddle with fire rate-->
+		<!-- Shooting cooldown for shooting at asteroids/missiles, in ms -->
+		<dodge>0</dodge>
+		<speed>8</speed>
+		<!-- Superficial change.. just makes it fly faster -->
+		<cost>30</cost>
+		<bp>2</bp>
+		<droneImage>drone_defense_0</droneImage>
+		<!-- WEAPON INFO -->
+		<weaponBlueprint>DRONE_LASER</weaponBlueprint>
+		<iconImage>defense</iconImage>
+		<rarity>0</rarity>	<!--N/A-->
+	</droneBlueprint>
+	
+	
+	<!--Special Shield Drone that powers other drones.-->
+	
+	<droneBlueprint name="ADMIN_DRONE">	
+		<type>SHIELD</type>
+		<level>1</level>
+		<tip>tip_defense</tip>
+		<title>Administrator Drone</title>
+		<short>Admin</short>
+		<desc>Augmented Shield Drone that can manage other drones more fficiently</desc>
+		<power>-4</power>
+		<cooldown>50000</cooldown>
+		<!-- cooldown for recharge, in ms -->
+		<dodge>0</dodge>
+		<speed>12</speed>
+		<!-- Superficial change.. just makes it fly faster -->
+		<cost>80</cost>
+		<bp>2</bp>
+		<droneImage>drone_shield</droneImage>
+		<iconImage>shield</iconImage>
+		<rarity>5</rarity> <!--Legendary-->
+	</droneBlueprint>
+
+</FTL>

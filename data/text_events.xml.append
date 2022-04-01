@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FTL>
 
-<!--SCAV_SCAVENGING_QUEST-->
-<text name="event_SCAV_UNLOCK_text">As you approach the beacon you are hailed by a young Scav in a repurposed mining ship. It's modulated English crackles and breaks over the comms: 
-    "Woah!! Is th#t a real =####= class-sh#p? RADICAL! I r##lly need- =###############= -and I'll even pay! I got- =#######= -What do y#u say? Please?"</text>
-<text name="event_SCAV_UNLOCK_choice_a_text">Sure thing bro!</text>
-<text name="event_SCAV_UNLOCK_choice_b_text">Refuse.</text>
-<text name="event_SCAV_UNLOCK_choice_b_response_text">The Scav falls silent for a moment, before crackling flatly, "Barf. Well wh#tever, I'll just k##p- =####=". You fleetingly wonder what that strange little Scav might have wanted, and for what.</text>
+    <!--SCAV_SCAVENGING_QUEST-->
+    <text name="event_SCAV_UNLOCK_text">As you approach the beacon you are hailed by a young Scav in a repurposed mining ship. It's modulated English crackles and breaks over the comms: 
+        "Woah!! Is th#t a real =####= class-sh#p? RADICAL! I r##lly need- =###############= -and I'll even pay! I got- =#######= -What do y#u say? Please?"</text>
+    <text name="event_SCAV_UNLOCK_choice_a_text">Sure thing bro!</text>
+    <text name="event_SCAV_UNLOCK_choice_b_text">Refuse.</text>
+    <text name="event_SCAV_UNLOCK_choice_b_response_text">The Scav falls silent for a moment, before crackling flatly, "Barf. Well wh#tever, I'll just k##p- =####=". You fleetingly wonder what that strange little Scav might have wanted, and for what.</text>
 
-<!--SCAV_SCAVENGING_QUEST_DAMAGE1-->
-<text name="event_SCAV_UNLOCK_DAMAGE1_1_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_1_choice_a_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_1_choice_a_response_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_1_choice_b_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_2_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_2_choice_a_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_2_choice_a_response_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_2_choice_b_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_3_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_3_choice_a_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_3_choice_a_response_text"></text>
-<text name="event_SCAV_UNLOCK_DAMAGE1_3_choice_b_text"></text>
+    <!--SCAV_SCAVENGING_QUEST_DAMAGE1-->
+    <text name="event_SCAV_UNLOCK_DAMAGE1_1_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_1_choice_a_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_1_choice_a_response_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_1_choice_b_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_2_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_2_choice_a_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_2_choice_a_response_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_2_choice_b_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_3_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_3_choice_a_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_3_choice_a_response_text"></text>
+    <text name="event_SCAV_UNLOCK_DAMAGE1_3_choice_b_text"></text>
 </FTL>

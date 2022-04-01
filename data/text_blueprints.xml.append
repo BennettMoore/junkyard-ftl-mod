@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<text name="text_PLAYER_SHIP_CIRCLE_class">Federation "Junkyard"</text>
-<text name="text_PLAYER_SHIP_CIRCLE_name">The Dolea</text>
-<text name="text_PLAYER_SHIP_CIRCLE_desc">"Desperation breeds innovation" is a perfect way to describe the Federation Reclaimer, known better as the "Junkyard". It's equipped with a Scrap Recovery Arm to help the crew purchase better parts for it, and an additional drone slot.</text>
-<text name="text_PLAYER_SHIP_CIRCLE_2_desc">The scavengers who built this ship were unable to find a functioning weapon or shield system, but this model compensates with truly unmatched drone launch and recovery capabilities.</text>
-<text name="text_PLAYER_SHIP_CIRCLE_2_name">The Scrap Heap</text>
-<text name="text_PLAYER_SHIP_CIRCLE_2_class">Federation "Junkyard"</text>
-<text name="text_PLAYER_SHIP_CIRCLE_3_desc">The scavengers who built this ship were unable to find a functioning weapon or shield system, but this model compensates with truly unmatched drone launch and recovery capabilities.</text>
-<text name="text_PLAYER_SHIP_CIRCLE_3_name">Model N</text>
-<text name="text_PLAYER_SHIP_CIRCLE_3_class">Federation "Junkyard"</text>
+<FTL>
 
+	<text name="text_PLAYER_SHIP_CIRCLE_class">Federation "Junkyard"</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_name">The Dolea</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_desc">"Desperation breeds innovation" is a perfect way to describe the Federation Reclaimer, known better as the "Junkyard". It's equipped with a Scrap Recovery Arm to help the crew purchase better parts for it, and an additional drone slot.</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_2_desc">The scavengers who built this ship were unable to find a functioning weapon or shield system, but this model compensates with truly unmatched drone launch and recovery capabilities.</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_2_name">The Scrap Heap</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_2_class">Federation "Junkyard"</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_3_desc">The scavengers who built this ship were unable to find a functioning weapon or shield system, but this model compensates with truly unmatched drone launch and recovery capabilities.</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_3_name">Model N</text>
+	<text name="text_PLAYER_SHIP_CIRCLE_3_class">Federation "Junkyard"</text>
+
+</FTL>
