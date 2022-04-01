@@ -1,0 +1,6 @@
+.suo
+*.sqlite
+*.cache
+*.json
+bin
+obj
