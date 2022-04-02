@@ -25,7 +25,7 @@
 		</race>
 		
 		<race name="holo">
-			
+
 			<!--Changes to whatever race you name it (Shhhh, it's an Easter Egg)-->
 			<nameRace transformName="Zoltan" changeIfSame="true">energy</nameRace>
 			<nameRace transformName="Human" changeIfSame="true">human</nameRace>
@@ -38,38 +38,47 @@
 			
 			<moveSpeedMultiplier>1.3</moveSpeedMultiplier>
 			<resistsMindControl>true</resistsMindControl>   
+			<bonusPower>1</bonusPower>
+			<cloneLoseSkills>false</cloneLoseSkills>
+			<canSuffocate>false</canSuffocate>
+			<noClone>true</noClone>
+			<animBase>mantis</animBase>
+			<animSheet>holo</animSheet>
+			<repairSpeed>1.5</repairSpeed>
+			<damageMultiplier>1.5</damageMultiplier>
+			<stunMultiplier>0.5</stunMultiplier>
+			<deathEffect>								<!--Spawns a special Holo that has unique effects and (hopefully) will not spawn another Holo-->
+				<transformRace health="0" healthFraction="1.0" deathSound="false">unstable_holo</transformRace>
+			</deathEffect>
+		</race>
+	
+	<race name="unstable_holo">
+			
+			<moveSpeedMultiplier>1.5</moveSpeedMultiplier>
+			<resistsMindControl>true</resistsMindControl>   
+			<bonusPower>-1</bonusPower>
 			<powerDrain>1</powerDrain>
-			<powerDrainFriendly>true</powerDrainFriendly>
 			<cloneLoseSkills>false</cloneLoseSkills>
 			<canSuffocate>false</canSuffocate>
 			<animBase>mantis</animBase>
-			<animSheet>holo</animSheet>
-			<deathEffect>								<!--Spawns a special Holo that has unique effects and (hopefully) will not spawn another Holo-->
-				<spawnCrew>                                                                
-					<race>holo</race>                                                     
-					<name>Unstable Holo-Crew</name>                                               
-					<number>1</number>                                                       
-					<healthPercentage>1.0</healthPercentage>                                                                        
-					<enemy>false</enemy>                                                  
-					<noSlot>true</noSlot>
-					<noClone>true</noClone>
-					<controllable>false</controllable>
-					<healCrewAmount>-0.5</healCrewAmount>
-					<oxygenChangeSpeed>-0.3</oxygenChangeSpeed>
-					<moveSpeedMultiplier>1.7</moveSpeedMultiplier>
-					<repairSpeed>0.5</repairSpeed>
-					<damageMultiplier>1.2</damageMultiplier>
-					<deathSounds>
-							<deathSound>zoltanDeath</deathSound>
-					</deathSounds>
-					<deathEffect>						<!--Explodes, damaging the ship, any crew, and possibly starting a fire-->
-						<shipFriendlyFire>true</shipFriendlyFire>
-						<friendlyFire>true</friendlyFire>
-						<fireChance>0.5</fireChance>
-						<sysDamage>2</sysDamage>
-						<persDamage>2</persDamage>
-					</deathEffect>
-				</spawnCrew>
+			<animSheet>unstable_holo</animSheet>                                                                                                               
+			<controllable>false</controllable>
+			<selectable>false</selectable>
+			<oxygenChangeSpeed>-0.3</oxygenChangeSpeed>
+			<repairSpeed>0.2</repairSpeed>
+			<damageMultiplier>2.2</damageMultiplier>
+			<trueHealAmount>-0.4</trueHealAmount>
+			<stunMultiplier>1.5</stunMultiplier> 
+			<deathSounds>
+				<deathSound>zoltanDeath</deathSound>
+			</deathSounds>                                  
+			<hasDeathExplosion>true</hasDeathExplosion>
+			<deathEffect>						<!--Explodes, damaging the ship, any crew, and possibly starting a fire-->
+				<shipFriendlyFire>true</shipFriendlyFire>
+				<friendlyFire>true</friendlyFire>
+				<fireChance>0.5</fireChance>
+				<sysDamage>2</sysDamage>
+				<persDamage>2</persDamage>
 			</deathEffect>
 		</race>
 	</crew>

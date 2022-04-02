@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FTL>
-
+	
 	<animSheet name="scav" w="315" h="455" fw="35" fh="35">people/scav_base.png</animSheet>
 
 	<anim name="scav_clone">
@@ -19,7 +19,7 @@
 
 	<anim name="scav_death_left">
 		<sheet>scav</sheet>
-		<desc length="5" x="0" y="2" />
+		<desc length="5" x="3" y="0" />
 		<time>0.75</time>
 	</anim>
 
@@ -149,6 +149,309 @@
 
 	<anim name="scav_portrait">
 		<sheet>scav</sheet>
+		<desc length="1" x="0" y="0" />
+		<time>1</time>
+	</anim>
+
+	
+	<animSheet name="holo" w="315" h="455" fw="35" fh="35">people/holo_base.png</animSheet>
+
+	<anim name="holo_clone">
+		<sheet>holo</sheet>
+		<desc length="6" x="0" y="2" />
+		<time>0.9</time>
+	</anim>
+
+
+	<anim name="holo_death_right">
+		<sheet>holo</sheet>
+		<desc length="7" x="3" y="0" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_death_left">
+		<sheet>holo</sheet>
+		<desc length="7" x="3" y="0" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_walk_down">
+		<sheet>holo</sheet>
+		<desc length="4" x="0" y="12" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_walk_right">
+		<sheet>holo</sheet>
+		<desc length="4" x="4" y="12" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_walk_up">
+		<sheet>holo</sheet>
+		<desc length="4" x="0" y="11" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_walk_left">
+		<sheet>holo</sheet>
+		<desc length="4" x="4" y="11" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_shoot_down">
+		<sheet>holo</sheet>
+		<desc length="4" x="0" y="10" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_shoot_right">
+		<sheet>holo</sheet>
+		<desc length="4" x="4" y="10" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_shoot_up">
+		<sheet>holo</sheet>
+		<desc length="4" x="0" y="9" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_shoot_left">
+		<sheet>holo</sheet>
+		<desc length="4" x="4" y="9" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_fire_down">
+		<sheet>holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_fire_right">
+		<sheet>holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_fire_up">
+		<sheet>holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_fire_left">
+		<sheet>holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_repair">
+		<sheet>holo</sheet>
+		<desc length="9" x="0" y="7" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_punch_up">
+		<sheet>holo</sheet>
+		<desc length="6" x="0" y="1" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_punch_down">
+		<sheet>holo</sheet>
+		<desc length="6" x="0" y="6" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="holo_teleport">
+		<sheet>holo</sheet>
+		<desc length="9" x="0" y="3" />
+		<time>0.5</time>
+	</anim>
+
+	<anim name="holo_type_right">
+		<sheet>holo</sheet>
+		<desc length="4" x="0" y="5" />
+		<time>0.75</time>
+	</anim>
+	<anim name="holo_type_left">
+		<sheet>holo</sheet>
+		<desc length="4" x="4" y="5" />
+		<time>0.75</time>
+	</anim>
+	<anim name="holo_type_up">
+		<sheet>holo</sheet>
+		<desc length="4" x="0" y="4" />
+		<time>0.75</time>
+	</anim>
+	<anim name="holo_type_down">
+		<sheet>holo</sheet>
+		<desc length="4" x="4" y="4" />
+		<time>0.75</time>
+	</anim>
+
+	<!-- every crewmember uses this -->
+	<anim name="crewLaser">
+		<sheet>holo</sheet>
+		<desc length="1" x="1" y="0" />
+		<time>0.5</time>
+	</anim>
+
+	<anim name="holo_portrait">
+		<sheet>holo</sheet>
+		<desc length="1" x="0" y="0" />
+		<time>1</time>
+	</anim>
+	
+	<animSheet name="unstable_holo" w="315" h="455" fw="35" fh="35">people/unstable_holo_base.png</animSheet>
+
+	<anim name="unstable_holo_clone">
+		<sheet>unstable_holo</sheet>
+		<desc length="6" x="0" y="2" />
+		<time>0.9</time>
+	</anim>
+
+
+	<anim name="unstable_holo_death_right">
+		<sheet>unstable_holo</sheet>
+		<desc length="7" x="3" y="0" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_death_left">
+		<sheet>unstable_holo</sheet>
+		<desc length="7" x="3" y="0" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_walk_down">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="0" y="12" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_walk_right">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="4" y="12" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_walk_up">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="0" y="11" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_walk_left">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="4" y="11" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_shoot_down">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="0" y="10" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_shoot_right">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="4" y="10" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_shoot_up">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="0" y="9" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_shoot_left">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="4" y="9" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_fire_down">
+		<sheet>unstable_holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_fire_right">
+		<sheet>unstable_holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_fire_up">
+		<sheet>unstable_holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_fire_left">
+		<sheet>unstable_holo</sheet>
+		<desc length="9" x="0" y="8" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_repair">
+		<sheet>unstable_holo</sheet>
+		<desc length="9" x="0" y="7" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_punch_up">
+		<sheet>unstable_holo</sheet>
+		<desc length="6" x="0" y="1" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_punch_down">
+		<sheet>unstable_holo</sheet>
+		<desc length="6" x="0" y="6" />
+		<time>1.0</time>
+	</anim>
+
+	<anim name="unstable_holo_teleport">
+		<sheet>unstable_holo</sheet>
+		<desc length="9" x="0" y="3" />
+		<time>0.5</time>
+	</anim>
+
+	<anim name="unstable_holo_type_right">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="0" y="5" />
+		<time>0.75</time>
+	</anim>
+	<anim name="unstable_holo_type_left">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="4" y="5" />
+		<time>0.75</time>
+	</anim>
+	<anim name="unstable_holo_type_up">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="0" y="4" />
+		<time>0.75</time>
+	</anim>
+	<anim name="unstable_holo_type_down">
+		<sheet>unstable_holo</sheet>
+		<desc length="4" x="4" y="4" />
+		<time>0.75</time>
+	</anim>
+
+	<!-- every crewmember uses this -->
+	<anim name="crewLaser">
+		<sheet>unstable_holo</sheet>
+		<desc length="1" x="1" y="0" />
+		<time>0.5</time>
+	</anim>
+
+	<anim name="unstable_holo_portrait">
+		<sheet>unstable_holo</sheet>
 		<desc length="1" x="0" y="0" />
 		<time>1</time>
 	</anim>
