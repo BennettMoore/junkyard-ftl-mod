@@ -20,9 +20,9 @@ This is primarily a side project, so I don't intend to set deadlines for myself.
 	- Scavs ☐
 		- Make Scav sprites ☑
 		- Give Scavs a unique trait ☐
-	- Holo-Crew ☐
-		- Make Holo sprites ☐
-		- Give Holos a unique trait ☐
+	- Holo-Crew ☑
+		- Make Holo sprites ☑
+		- Give Holos a unique trait ☑
 	- 3rd Race? ☐
 - Ships ☐
 	- Federation "Junkyard" ☐
