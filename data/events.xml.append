@@ -113,13 +113,10 @@
 
 	<eventList name="QUESTS_SCAV">
 		<event load="QUEST_ESCORT"/>
+		<event load="SCAV_SCAVENGING_QUEST"/>
 		<!--<event load="MERCHANT_REQUEST"/>-->
 		<!--<event load="FEDERATION_PLANET_SIGNAL"/>-->
 		<!--<event load="MERCENARY_WORK_START"/>-->
-	</eventList>
-
-	<eventList name="SCAV_UNLOCK_1">
-		<event load="SCAV_SCAVENGING_QUEST"/>
 	</eventList>
 
 

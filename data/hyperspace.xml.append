@@ -7,21 +7,44 @@
 	<!-- Initializes the Scav race.-->
 	<crew>
 		<race name="scav">
-			<repairSpeed>1.5</repairSpeed> <!--TODO: Give Scavs interesting racial ability-->
-			<damageMultiplier>1</damageMultiplier>
-            
+			<repairSpeed>1.2</repairSpeed>
+			<suffocationModifier>0.5</suffocationModifier>
+			<fireDamageMultiplier>0.5</fireDamageMultiplier>
+			<stunMultiplier>0.75</stunMultiplier>
 			<deathSounds>
 				<deathSound>engiDeath</deathSound>
-			</deathSounds>                                                   
+			</deathSounds>
 			<animSheet>scav</animSheet>
-			<skills>
-				<piloting req="15"/>
-				<engines req="10"/>
-				<shields req="35"/>
-				<weapons req="45"/>
-				<repair req="9"/>
-				<combat req="8"/>
-			</skills>
+			
+		</race>
+		
+		<race name="unstable_holo">
+			
+			<moveSpeedMultiplier>1.5</moveSpeedMultiplier>
+			<resistsMindControl>true</resistsMindControl>   
+			<cloneLoseSkills>false</cloneLoseSkills>
+			<canSuffocate>false</canSuffocate>
+			<animBase>mantis</animBase>
+			<animSheet>unstable_holo</animSheet>                                                                                                               
+			<controllable>false</controllable>
+			<!--<selectable>false</selectable>-->
+			<oxygenChangeSpeed>-0.1</oxygenChangeSpeed>
+			<repairSpeed>0.2</repairSpeed>
+			<damageMultiplier>2.2</damageMultiplier>
+			<trueHealAmount>-0.5</trueHealAmount>
+			<stunMultiplier>1.5</stunMultiplier> 
+			<deathSounds>
+				<deathSound>sysExplosion</deathSound>
+			</deathSounds>                                 
+			<maxHealth>75</maxHealth>
+			<hasDeathExplosion>true</hasDeathExplosion>
+			<deathEffect>						<!--Explodes, damaging the ship, any crew, and possibly starting a fire-->
+				<fireChance>5</fireChance>
+				<sysDamage>1</sysDamage>
+				<persDamage>2</persDamage>
+				<shipFriendlyFire>true</shipFriendlyFire>
+				<friendlyFire>true</friendlyFire>
+			</deathEffect>
 		</race>
 		
 		<race name="holo">
@@ -38,7 +61,6 @@
 			
 			<moveSpeedMultiplier>1.3</moveSpeedMultiplier>
 			<resistsMindControl>true</resistsMindControl>   
-			<bonusPower>1</bonusPower>
 			<cloneLoseSkills>false</cloneLoseSkills>
 			<canSuffocate>false</canSuffocate>
 			<noClone>true</noClone>
@@ -46,39 +68,8 @@
 			<animSheet>holo</animSheet>
 			<repairSpeed>1.5</repairSpeed>
 			<damageMultiplier>1.5</damageMultiplier>
-			<stunMultiplier>0.5</stunMultiplier>
 			<deathEffect>								<!--Spawns a special Holo that has unique effects and (hopefully) will not spawn another Holo-->
 				<transformRace health="0" healthFraction="1.0" deathSound="false">unstable_holo</transformRace>
-			</deathEffect>
-		</race>
-	
-	<race name="unstable_holo">
-			
-			<moveSpeedMultiplier>1.5</moveSpeedMultiplier>
-			<resistsMindControl>true</resistsMindControl>   
-			<bonusPower>-1</bonusPower>
-			<powerDrain>1</powerDrain>
-			<cloneLoseSkills>false</cloneLoseSkills>
-			<canSuffocate>false</canSuffocate>
-			<animBase>mantis</animBase>
-			<animSheet>unstable_holo</animSheet>                                                                                                               
-			<controllable>false</controllable>
-			<selectable>false</selectable>
-			<oxygenChangeSpeed>-0.3</oxygenChangeSpeed>
-			<repairSpeed>0.2</repairSpeed>
-			<damageMultiplier>2.2</damageMultiplier>
-			<trueHealAmount>-0.4</trueHealAmount>
-			<stunMultiplier>1.5</stunMultiplier> 
-			<deathSounds>
-				<deathSound>zoltanDeath</deathSound>
-			</deathSounds>                                  
-			<hasDeathExplosion>true</hasDeathExplosion>
-			<deathEffect>						<!--Explodes, damaging the ship, any crew, and possibly starting a fire-->
-				<shipFriendlyFire>true</shipFriendlyFire>
-				<friendlyFire>true</friendlyFire>
-				<fireChance>0.5</fireChance>
-				<sysDamage>2</sysDamage>
-				<persDamage>2</persDamage>
 			</deathEffect>
 		</race>
 	</crew>

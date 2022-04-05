@@ -159,7 +159,7 @@
 	<anim name="holo_clone">
 		<sheet>holo</sheet>
 		<desc length="6" x="0" y="2" />
-		<time>0.9</time>
+		<time>0.75</time>
 	</anim>
 
 
@@ -178,25 +178,25 @@
 	<anim name="holo_walk_down">
 		<sheet>holo</sheet>
 		<desc length="4" x="0" y="12" />
-		<time>1.0</time>
+		<time>0.75</time>
 	</anim>
 
 	<anim name="holo_walk_right">
 		<sheet>holo</sheet>
 		<desc length="4" x="4" y="12" />
-		<time>1.0</time>
+		<time>0.75</time>
 	</anim>
 
 	<anim name="holo_walk_up">
 		<sheet>holo</sheet>
 		<desc length="4" x="0" y="11" />
-		<time>1.0</time>
+		<time>0.75</time>
 	</anim>
 
 	<anim name="holo_walk_left">
 		<sheet>holo</sheet>
 		<desc length="4" x="4" y="11" />
-		<time>1.0</time>
+		<time>0.75</time>
 	</anim>
 
 	<anim name="holo_shoot_down">
@@ -310,7 +310,7 @@
 	<anim name="unstable_holo_clone">
 		<sheet>unstable_holo</sheet>
 		<desc length="6" x="0" y="2" />
-		<time>0.9</time>
+		<time>0.75</time>
 	</anim>
 
 
@@ -329,25 +329,25 @@
 	<anim name="unstable_holo_walk_down">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="0" y="12" />
-		<time>1.0</time>
+		<time>0.5</time>
 	</anim>
 
 	<anim name="unstable_holo_walk_right">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="4" y="12" />
-		<time>1.0</time>
+		<time>0.5</time>
 	</anim>
 
 	<anim name="unstable_holo_walk_up">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="0" y="11" />
-		<time>1.0</time>
+		<time>0.5</time>
 	</anim>
 
 	<anim name="unstable_holo_walk_left">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="4" y="11" />
-		<time>1.0</time>
+		<time>0.5</time>
 	</anim>
 
 	<anim name="unstable_holo_shoot_down">
@@ -401,7 +401,7 @@
 	<anim name="unstable_holo_repair">
 		<sheet>unstable_holo</sheet>
 		<desc length="9" x="0" y="7" />
-		<time>1.0</time>
+		<time>2</time>
 	</anim>
 
 	<anim name="unstable_holo_punch_up">
@@ -419,28 +419,28 @@
 	<anim name="unstable_holo_teleport">
 		<sheet>unstable_holo</sheet>
 		<desc length="9" x="0" y="3" />
-		<time>0.5</time>
+		<time>1</time>
 	</anim>
 
 	<anim name="unstable_holo_type_right">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="0" y="5" />
-		<time>0.75</time>
+		<time>1</time>
 	</anim>
 	<anim name="unstable_holo_type_left">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="4" y="5" />
-		<time>0.75</time>
+		<time>0.5</time>
 	</anim>
 	<anim name="unstable_holo_type_up">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="0" y="4" />
-		<time>0.75</time>
+		<time>0.5</time>
 	</anim>
 	<anim name="unstable_holo_type_down">
 		<sheet>unstable_holo</sheet>
 		<desc length="4" x="4" y="4" />
-		<time>0.75</time>
+		<time>1</time>
 	</anim>
 
 	<!-- every crewmember uses this -->

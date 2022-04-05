@@ -12,15 +12,16 @@
 -->
 
 	<crewBlueprint name="scav">
-		<desc>Insert Description Here</desc>	<!--TODO: Write Scav Description-->
+		<desc>The 'Scavengers' build their ships from other race's junk, and are well equpped to deal with any dangerous repair jobs that may spring up.</desc>
 		<cost>50</cost>
 		<bp>2</bp>
 		<title>Scavenger</title>
 		<short>Scav</short>
 		<rarity>2</rarity>
 		<powerList>								<!--TODO: Remove Engi Power-->
-			<power id="crew_engi_power_1" />
-			<power id="crew_engi_power_2" />
+			<power>1.2x repair speed</power>
+			<power>Damage from environmental effects halved</power>
+			<power>0.75x stun duration</power>
 		</powerList>
 		<colorList>
 			<layer><!-- Layer 1 - Clothes -->
@@ -39,15 +40,18 @@
 	</crewBlueprint>
 	
 	<crewBlueprint name="holo">
-		<desc>Insert Description Here</desc>	<!--TODO: Write Holo Description-->
+		<desc>New from Autocorp, the Holo-Crew! The holographic crewmember that does it all! Repair, Fight, Move, as long as you don't break it it'll get you anywhere!</desc>
 		<cost>90</cost>
 		<bp>2</bp>
 		<title>Holo-Crew</title>
 		<short>Holo</short>
 		<rarity>4</rarity>
-		<powerList>								<!--TODO: Remove Engi Power-->
-			<power id="crew_engi_power_1" />
-			<power id="crew_engi_power_2" />
+		<powerList>
+			<power>Inflict 1.5x damage in combat</power>
+			<power>1.3x move speed</power>
+			<power>1.5x repair speed</power>
+			<power>Immune to suffocation and mind control</power>
+			<power>Mint condition</power>
 		</powerList>
 		<colorList>
 			<layer><!-- Layer 1 - Hologram -->
@@ -62,15 +66,21 @@
 	</crewBlueprint>
 	
 	<crewBlueprint name="unstable_holo">
-		<desc>Insert Description Here</desc>	<!--TODO: Write Holo Description-->
+		<desc>New from Autocorp, the Holo-Crew! The holographic crewmember that *YOU FAILED*. *KILL!, KILL!, KILL!* as long as you don't break it *I WONT HAVE TO HURT YOU*</desc>
 		<cost>70</cost>
 		<bp>2</bp>
 		<title>Holo-Crew</title>
 		<short>Holo</short>
 		<rarity>0</rarity>
-		<powerList>								<!--TODO: Remove Engi Power-->
-			<power id="crew_engi_power_1" />
-			<power id="crew_engi_power_2" />
+		<powerList>
+			<power>Inflict over double damage in combat</power>
+			<power>1.5x move speed</power>
+			<power>0.2x repair speed</power>
+			<power>Immune to suffocation, mind control</power>
+			<power>Uncontrollable</power>
+			<power>Explodes on death, damaging ALL nearby systems and crew</power>
+			<power>Takes constant damage over time</power>
+			<power>1.5x stun duration</power>
 		</powerList>
 		<colorList>
 			<layer><!-- Layer 1 - Hologram -->
