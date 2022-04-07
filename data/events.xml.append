@@ -136,10 +136,10 @@
 	<event name="START_BEACON_SCAV">
 		<text load="START_BEACON_SCAV"/>
 	</event>
-	<textList name="START_BEACON_SCAV">		<!--TODO: Write Start Beacon Text-->
-		<text>This is a Test</text>
-		<text>This is a Test</text>
-		<text>This is a Test</text>
+	<textList name="START_BEACON_SCAV">
+		<text>Your sensors indicate a major space-trash cluster in this sector. It's bound to be home to some Scavengers, slowly turning all the junk into usable items. Perhaps you can take advantage of this race's odd fascination.</text>
+		<text>This sector contains an unusually high amount of metal. You doubt much of it will be usable scrap, but it's bound to have attracted Scavengers to it. You can only hope the Scavs have been turning that junk into something you can use against the Rebels.</text>
+		<text>This sector contains an unusually high amount of metal. You doubt much of it will be usable scrap, but it's bound to have attracted Scavengers to it. How they manage to stave off the Lanius is a mystery to you, but thankfully it doesn't apply to Federation crew.</text>
 	</textList>
 
 	<!--
@@ -751,7 +751,7 @@
 <!--@author Bennett Moore-->
 	
 	<event name="SCAV_SCAVENGING_QUEST" unique="true">				<!--Unlocks the Junkyard-->
-	   <text>As you approach the beacon you are hailed by a young Scav in a repurposed mining ship. It's modulated English crackles and breaks over the comms: "Woah!! Is th#t a real =####= class-sh#p? RADICAL! I r##lly need- =###############= -and I'll even pay! I got- =#######= -What do y#u say? Please?"</text>
+	   <text>As you approach the beacon you are hailed by a young Scav in a repurposed mining ship, painted in Federation colors. It's modulated English crackles and breaks over the comms: "Woah!! Is th#t a real =####= class-sh#p? RADICAL! I r##lly need- =###############= -and I'll even pay! I got- =#######= -What do y#u say? Please?"</text>
 	   <ship load="SCAV_QUEST_SHIP" hostile="false" />
 	   <choice hidden="true">
 		  <text>Sure thing bro!</text>								<!--Start Scenario-->

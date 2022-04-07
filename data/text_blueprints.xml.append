@@ -11,5 +11,6 @@
 	<text name="text_PLAYER_SHIP_CIRCLE_3_desc">The scavengers who built this ship were unable to find a functioning weapon or shield system, but this model compensates with truly unmatched drone launch and recovery capabilities.</text>
 	<text name="text_PLAYER_SHIP_CIRCLE_3_name">Model N</text>
 	<text name="text_PLAYER_SHIP_CIRCLE_3_class">Federation "Junkyard"</text>
+	<text name="text_QUEST_JUNK_class">Federation "Junkyard"</text>
 
 </FTL>
