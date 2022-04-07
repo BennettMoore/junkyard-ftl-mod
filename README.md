@@ -17,9 +17,9 @@ For stable versions of this mod, there should be a .ftl file that can be simply 
 This is primarily a side project, so I don't intend to set deadlines for myself. However, here's a rough list of the features I hope to implement into the mod. I'll try to update it when I can once I complete certain milestones.
 
 - Crew ☐
-	- Scavs ☐
+	- Scavs ☑
 		- Make Scav sprites ☑
-		- Give Scavs a unique trait ☐
+		- Give Scavs a unique trait ☑
 	- Holo-Crew ☑
 		- Make Holo sprites ☑
 		- Give Holos a unique trait ☑
