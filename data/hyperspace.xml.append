@@ -68,7 +68,7 @@
 			<animSheet>holo</animSheet>
 			<repairSpeed>1.5</repairSpeed>
 			<damageMultiplier>1.5</damageMultiplier>
-			<deathEffect>								<!--Spawns a special Holo that has unique effects and (hopefully) will not spawn another Holo-->
+			<deathEffect>								<!--Spawns an Unstable Holo that cannot be controlled, and has altered abilities-->
 				<transformRace health="0" healthFraction="1.0" deathSound="false">unstable_holo</transformRace>
 			</deathEffect>
 		</race>
@@ -84,26 +84,17 @@
 				<type>4</type>
 				<!--Unlocked by event-->
 				<!-- TODO: Get Event unlock functioning properly-->
-				<value>5</value>
 			</unlock>
-			<arrow variant="a" direction="right" image="arrow_5_right.png" tooltip="ship_unlock_sector5">PLAYER_SHIP_UNLOCKME</arrow>
 			<unlock variant="b">
-				<type>3</type>
-				<!--TODO: Create unlock event for b variant-->
-				<otherUnlocks>
-					<ship>PLAYER_SHIP_FOO</ship>
-					<ship>PLAYER_SHIP_BAR</ship>
-					<ship>PLAYER_SHIP_BAZ</ship>
-				</otherUnlocks>
+				<type>5</type> <!--Must beat flagship with Junkyard A-->
+				<victories>
+					<victory>PLAYER_SHIP_JUNK</victory>
+				</victories>
 			</unlock>
 			<unlock variant="c">
-				<type>5</type>
-				<!--Unlocked by victory-->
-				<victories>
-					<victory>PLAYER_SHIP_JUNK</victory>                      (any type of victory)
-					<victory type="flagship">PLAYER_SHIP_JUNK</victory>      (specifically a flagship kill)
-					<victory type="secretending">PLAYER_SHIP_JUNK</victory>  (specifically a custom victory of achievement type "secretending")
-				</victories>
+				<type>1</type> <!--Unlocks when player reaches sector 8 in Junkyard B-->
+				<shipReq>PLAYER_SHIP_JUNK_2</shipReq>
+				<value>8</value>
 			</unlock>
 		</ship>
 	</ships>

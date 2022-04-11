@@ -178,40 +178,38 @@
 	**********
 	-->
 
-<!--@author Subset Games-->
-
 	<event name="SCAV_STATION_DISTRESS" unique="false">
-		<text id="event_SCAV_STATION_DISTRESS_text"/>
+		<text>You spot an unnaturally derelict looking Scav ship floating near the beacon. You recieve a message from the ship, but from a Lanius, not a Scav: "...no...interfere...metal...required..." In the background a desperate Scav can faintly be heard shouting and banging on a door.</text>
 		<choice>
-			<text id="event_SCAV_STATION_DISTRESS_c1_choice"/>
+			<text>Move to engage.</text>
 			<event load="SCAV_STATION_DISTRESS_LIST"/>
 		</choice>
 		<choice>
-			<text id="event_SCAV_STATION_DISTRESS_c2_choice"/>
+			<text>Leave the Lanius to it's work.</text>
 			<event/>
 		</choice>
 	</event>
 	<eventList name="SCAV_STATION_DISTRESS_LIST">
 		<event>
-			<text id="event_SCAV_STATION_DISTRESS_LIST_1_text"/>
-			<ship load="SCAV_MANTIS_CONTROLLED" hostile="true"/>
-			<boarders min="1" max="2" class="mantis"/>
+			<text>"...stupid..." A piece of the Scav's ship breaks off and is launched towards your ship. Prepare to fight!</text>
+			<ship load="SCAV_LANIUS_CONTROLLED" hostile="true"/>
+			<damage amount="3" system="random" effect="breach" />
 		</event>
 		<event>
-			<text id="event_SCAV_STATION_DISTRESS_LIST_2_text"/>
-			<ship load="MANTIS_SCAV_STATION" hostile="true"/>
+			<text>The Scav's ship powers up and points it's weapons at you. Get ready.</text>
+			<ship load="SCAV_LANIUS_STATION" hostile="true"/>
 		</event>
 	</eventList>
 	<eventList name="SAVE_SCAV_STATION">
 		<event>
-			<text id="event_SAVE_SCAV_STATION_1_text"/>
+			<text>Despite your best efforts, the Scav suffocated.</text>
 		</event>
 		<event>
-			<text id="event_SAVE_SCAV_STATION_2_text"/>
-			<autoReward level="MED">fuel_only</autoReward>
+			<text>"Th#nk you s# much man. I don't have m- =#####= -but it's all yours." The Scav gives you some spare fuel.</text>
+			<autoReward level="MED">standard</autoReward>
 		</event>
 		<event>
-			<text id="event_SAVE_SCAV_STATION_3_text"/>
+			<text id="event_SAVE_SCAV_STATION_3_text"/>			<!--TODO: Finish possible quest rewards-->
 			<choice hidden="true">
 				<text id="event_SAVE_SCAV_STATION_3_c1_choice"/>
 				<event>
@@ -258,6 +256,8 @@
 		Events that havea distress beacon  
 	**********
 	-->
+
+	<!--@author Subset Games-->
 
 	<event name="DISTRESS_SCAV_REBEL" unique="true">
 		<text id="event_DISTRESS_SCAV_REBEL_text"/>
@@ -751,12 +751,12 @@
 <!--@author Bennett Moore-->
 	
 	<event name="SCAV_SCAVENGING_QUEST" unique="true">				<!--Unlocks the Junkyard-->
-	   <text>As you approach the beacon you are hailed by a young Scav in a repurposed mining ship, painted in Federation colors. It's modulated English crackles and breaks over the comms: "Woah!! Is th#t a real =####= class-sh#p? RADICAL! I r##lly need- =###############= -and I'll even pay! I got- =#######= -What do y#u say? Please?"</text>
-	   <ship load="SCAV_QUEST_SHIP" hostile="false" />
+	   <text>As you approach the beacon you are hailed by a young Scav in a repurposed mining ship, painted in Federation colors. It's modulated English crackles and breaks over the comms: "Woah!! Is th#t a real =####= class-sh#p? Wait... y#u guys must be F#deration! RADICAL!!! I r##lly need- =###############= -and I'll even pay! I got- =#######= -What do y#u say? Please?"</text>
+	   <ship load="SCAV_SHIP" hostile="false" />
 	   <choice hidden="true">
 		  <text>Sure thing bro!</text>								<!--Start Scenario-->
 		  <event>
-			 <text>The Scav turns off its comms, and without warning begins to attack! It's stripping random electronics out of your shield systems.</text>
+			 <text>The Scav's comms let out an electronic squeal before shutting off. Without warning, the Scav begins to attack! It's stripping random electronics out of your shield systems.</text>
 			 <damage amount="2" />
 			 <damage amount="2" system="shields" effect="breach" />
 			 <choice hidden="true">	
@@ -808,29 +808,30 @@
 	   <choice hidden="true">
 		  <text>Refuse.</text>										<!--Skip Scenario-->
 		  <event>
-			 <text>The Scav falls silent for a moment, before crackling flatly, "Barf. Well wh#tever, I'll just k##p- =####=". You fleetingly wonder what that strange little Scav might have wanted, and for what.</text>
+			 <text>The Scav falls silent for a moment, before crackling flatly, "Barf. Well, wh#tever, I'll just k##p- =##########=". You fleetingly wonder what that strange little Scav might have wanted, and what he might have given you.</text>
 		  </event>
 	   </choice>
 	</event>
-	<ship name="SCAV_QUEST_SHIP" auto_blueprint="SHIPS_CIRCLE" />
 
 	<event name="SCAV_SCAVENGING_QUEST_REWARD">						<!--Finish Quest-->
-			<text>As you arrive you see the Scav's ship docked with a large cruiser that looks like it's made from a hodge-podge of broken pieces. It powers up, and the Scav hails you from it. "Y#u like it? I even had it- =#####= -in Federation col#rs! I was pl#nning #n taking i# on an adv#nture, but it se#ms pretty- =##########= -so m#ybe I could j##n your crew and th#n you could take #t! It m#y look like- =######= -but I fit#ed it with the best st#ff I could find! What d# you say?"</text>
-			<choice hidden="true">
+		<text>As you arrive you see the Scav's ship docked with a large cruiser that looks like it's made from a hodge-podge of broken pieces. It powers up, and the Scav hails you from it. "Y#u like it? I even had it- =#####= -in Federation col#rs! I was pl#nning #n taking i# on an adv#nture to help defeat th# Rebels, but it se#ms pretty- =##########= -so m#ybe I could j##n your crew and th#n I can sh#w your- =######= -how I made it! It m#y look like- =######= -but I fit#ed it with the best st#ff I could find! What d# you say?"</text>
+		<ship load="SCAV_QUEST_SHIP" hostile="false" />	
+		<choice hidden="true">
 				<text>Agree to take the ship and the Scav.</text>	<!--Unlock Ship + Get Crew-->
 				<event>
-					<text>"Y#u won't- =#####= -this!! Oh m#n is this so- =###= -sick!!!"</text>
-					<unlockShip id="ship_PLAYER_SHIP_JUNK_unlock"/>
+					<text>"Y#u won't- =#####= -this!! Oh m#n is this so- =###= -sick!!!" The Scav excitedly beams aboard and begins downloading the plans for a ship to your ship's computer.</text>
+					<unlockCustomShip silent="false">PLAYER_SHIP_JUNK</unlockCustomShip>
 					<autoReward level="HIGH">scrap_only</autoReward>
-					<crewMember amount="1" class="scav" id="Zach"/>
+					<crewMember amount="1" class="scav">Zach</crewMember>
 				</event>
     		</choice>
 			<choice hidden="true">
 				<text>Refuse.</text>								<!--Refuse Ship, but Get Scrap-->
 				<event>
-					<text>"Oh. Th#t's #k... I guess I'll b# needing the ship, b#t I can #t least give you- =#########= -for your troubles. Later." The Scav beams over a hefty amount of scrap before jumping away in the ship.</text>
+					<text>"Oh. Th#t's #k... I guess I'll b# needing the ship then, b#t I can #t least give you- =#########= -for your troubles. Later." The Scav beams over a hefty amount of scrap and spare parts before working more on his ship.</text>
            			<autoReward level="HIGH">scrap_only</autoReward>
-					<autoReward level="HIGH">scrap_only</autoReward>
+					<autoReward level="HIGH">droneparts</autoReward>
+					<!--Idea: Have Zach's ship appear in the Last Stand using Hyperspace's custom event settings, and if you defeat a tough Rebel ship attacking him he'll give you something big, or do something else really good.-->
 				</event>
     		</choice>
 	</event>

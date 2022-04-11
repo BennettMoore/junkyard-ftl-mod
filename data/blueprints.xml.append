@@ -18,9 +18,9 @@
 		<title>Scavenger</title>
 		<short>Scav</short>
 		<rarity>2</rarity>
-		<powerList>								<!--TODO: Remove Engi Power-->
+		<powerList>
 			<power>1.2x repair speed</power>
-			<power>Damage from environmental effects halved</power>
+			<power>Environmental damage is halved</power>
 			<power>0.75x stun duration</power>
 		</powerList>
 		<colorList>
@@ -41,7 +41,7 @@
 	
 	<crewBlueprint name="holo">
 		<desc>New from Autocorp, the Holo-Crew! The holographic crewmember that does it all! Repair, Fight, Move, as long as you don't break it it'll get you anywhere!</desc>
-		<cost>90</cost>
+		<cost>70</cost>
 		<bp>2</bp>
 		<title>Holo-Crew</title>
 		<short>Holo</short>
@@ -67,7 +67,7 @@
 	
 	<crewBlueprint name="unstable_holo">
 		<desc>New from Autocorp, the Holo-Crew! The holographic crewmember that *YOU FAILED*. *KILL!, KILL!, KILL!* as long as you don't break it *I WONT HAVE TO HURT YOU*</desc>
-		<cost>70</cost>
+		<cost>30</cost>
 		<bp>2</bp>
 		<title>Holo-Crew</title>
 		<short>Holo</short>
@@ -104,7 +104,7 @@
 		<class>Federation "Junkyard"</class>
 		<name>The Dolea</name>
 		<desc>"Desperation breeds innovation" is a perfect way to describe the Federation Reclaimer, known better as the "Junkyard". It's equipped with a Scrap Recovery Arm to help the crew purchase better parts for it, and an additional drone slot.</desc>
-		<unlock id="ship_PLAYER_SHIP_JUNK_unlock" />
+		<unlock>Find </unlock>
 		<systemList>
 			<battery power="1" room="17" start="false" img="room_battery" />
 			<cloaking power="1" room="14" start="false" img="room_cloaking_9" />
@@ -119,8 +119,8 @@
 					<number>1</number>
 				</slot>
 			</doors>
-			<drones power="2" room="2" start="false" img="room_drones_4" />
-			<engines power="2" room="8" start="true" img="room_engines">
+			<drones power="4" room="2" start="true" img="room_drones_4" />
+			<engines power="1" room="8" start="true" img="room_engines">
 				<slot>
 					<direction>down</direction>
 					<number>2</number>
@@ -161,7 +161,7 @@
 			</weapons>
 		</systemList>
 		<weaponSlots>4</weaponSlots>
-		<droneSlots>3</droneSlots>
+		<droneSlots>4</droneSlots>
 		<weaponList missiles="0" count="4">
 			<weapon name="LASER_BURST_2" />
 			<weapon name="ION_1" />
@@ -177,7 +177,7 @@
 	<shipBlueprint name="PLAYER_SHIP_JUNK_2" layout="fed_junkyard_2" img="fed_junkyard_2">
 		<class>Federation "Junkyard"</class>
 		<name>The Scrap Heap</name>
-		<desc>The scavengers who built this ship may have struggled to find some basic systems to install, but this model compensates with truly unmatched drone launch and recovery capabilities, and additional unique drones.</desc>
+		<desc>The Scavengers who built this ship may have struggled to find some basic systems to install, but this model compensates with truly unmatched drone launch and recovery capabilities, and additional unique drones.</desc>
 		<systemList>
 			<battery power="1" room="4" start="false" img="room_battery_3" />
 			<cloaking power="1" room="7" start="false" img="room_cloaking_6" />
@@ -387,7 +387,7 @@
 		<tip>tip_defense</tip>
 		<title>Administrator Drone</title>
 		<short>Admin</short>
-		<desc>Augmented Shield Drone that can manage other drones more fficiently</desc>
+		<desc>Augmented Shield Drone that can manage other drones more efficiently</desc>
 		<power>-4</power>
 		<cooldown>50000</cooldown>
 		<!-- cooldown for recharge, in ms -->

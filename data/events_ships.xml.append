@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<FTL>
+	<ship name="SCAV_SHIP" auto_blueprint="SHIPS_CIRCLE">
+		<destroyed load="DESTROYED_DEFAULT"/>
+		<deadCrew load="DEAD_CREW_DEFAULT"/>
+	</ship>
+	
+	<ship name="SCAV_QUEST_SHIP" auto_blueprint="QUEST_JUNK">
+		<destroyed load="DESTROYED_DEFAULT"/>
+		<deadCrew load="DEAD_CREW_DEFAULT"/>
+	</ship>
+
+
+	<ship name="SCAV_LANIUS_CONTROLLED" auto_blueprint="SHIPS_CIRCLE">
+		<destroyed load="DESTROYED_DEFAULT"/>
+		<deadCrew load="DEAD_CREW_DEFAULT"/>
+		<crew>
+			<crewMember type="anaerobic" prop="2"/>
+		</crew>
+	</ship>
+
+	<ship name="SCAV_LANIUS_STATION" auto_blueprint="SHIPS_CIRCLE">
+		<destroyed>
+			<text>The Scav's ship breaks apart into it's base components. Unfortunately you weren't able to save that Scav, but at least you dealt with the Lanius.</text>
+			<autoReward level="MED">standard</autoReward>
+		</destroyed>
+		<deadCrew>
+			<text>You defeat the final Lanius, leaving the ship mostly in one piece.</text>
+			<autoReward level="HIGH">standard</autoReward>
+			<choice hidden="true">
+				<text>Attempt to contact the Scav.</text>
+				<event load="SAVE_SCAV_STATION"/>
+			</choice>
+		</deadCrew>
+		<crew>
+			<crewMember type="anaerobic" prop="3"/>
+		</crew>
+	</ship>
+
+	<ship name="FUEL_OFF_ENGI_DUBIOUS" auto_blueprint="SHIPS_CIRCLE">
+		<escape timer="80" min="30" max="30"/>
+		<gotaway>
+			<text id="ship_FUEL_OFF_ENGI_DUBIOUS_gotaway_text"/>
+		</gotaway>
+		<destroyed>
+			<text id="ship_FUEL_OFF_ENGI_DUBIOUS_destroyed_text"/>
+			<autoReward level="MED">fuel</autoReward>
+		</destroyed>
+		<deadCrew>
+			<text id="ship_FUEL_OFF_ENGI_DUBIOUS_deadCrew_text"/>
+			<autoReward level="HIGH">fuel</autoReward>
+		</deadCrew>
+	</ship>
+</FTL>
