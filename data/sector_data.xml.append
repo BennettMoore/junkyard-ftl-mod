@@ -67,6 +67,7 @@
 		<blueprint name="rock" rarity="5"/>		<!--Legendary-->
 		<blueprint name="human" rarity="2"/>	<!--Uncommon-->
 		<blueprint name="scav" rarity="1"/>		<!--Common-->
+		<blueprint name="holo" rarity="3"/>		<!--Rare-->
 	</rarityList>
 	<startEvent>START_BEACON_SCAV</startEvent>
 	<event name="STORE_SCAV" min="2" max="3"/>
