@@ -67,7 +67,6 @@
 		<blueprint name="rock" rarity="5"/>		<!--Legendary-->
 		<blueprint name="human" rarity="2"/>	<!--Uncommon-->
 		<blueprint name="scav" rarity="1"/>		<!--Common-->
-		<blueprint name="holo" rarity="3"/>		<!--Rare-->
 	</rarityList>
 	<startEvent>START_BEACON_SCAV</startEvent>
 	<event name="STORE_SCAV" min="2" max="3"/>
@@ -75,7 +74,7 @@
 	<event name="NOTHING_SCAV" min="1" max="2"/>
 	<event name="ITEMS_SCAV" min="3" max="3"/>
 	<event name="DISTRESS_BEACON_SCAV" min="1" max="3"/>
-	<event name="QUESTS_SCAV" min="1" max="1"/>
+	<event name="QUESTS_SCAV" min="1" max="4"/>
 	<event name="NEUTRAL_SCAV" min="5" max="7"/>
 	<event name="HOSTILE_SCAV" min="5" max="7"/>
 </sectorDescription>

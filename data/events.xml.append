@@ -112,7 +112,7 @@
 		<!--<event load="DISTRESS_SATELLITE_DEFENSE"/>-->
 	</eventList>
 
-	<eventList name="QUESTS_SCAV">
+	<eventList name="QUESTS_SCAV"> <!--TODO: Fix bug where game crashes when jumping to Scav Homeworld-->
 		<event load="QUEST_ESCORT"/>
 		<event load="SCAV_SCAVENGING_QUEST"/>
 		<!--<event load="MERCHANT_REQUEST"/>-->
@@ -339,7 +339,9 @@
 					  <text>Some new crew.</text>				<!--Get 3 new crew-->
 					  <event>
 						 <text>"Yes. Will join." The Lanius simply stand around, waiting to be given orders.</text>
-						 <crewMember combat="1" amount="3" class="anaerobic" />
+						 <crewMember combat="1" amount="1" class="anaerobic" />
+						 <crewMember combat="1" amount="1" class="anaerobic" />
+						 <crewMember combat="1" amount="1" class="anaerobic" />
 					  </event>
 				   </choice>
 				   <choice hidden="true">
@@ -348,7 +350,7 @@
 						 <text>"Yes. Give." The Lanius give you large containers of fuel and a number of missiles. One Lanius jokes with your crew-member, "Do not consume. 'Too spicy'... as Human speak."</text>
 						 <autoReward level="HIGH">fuel_only</autoReward>
 						 <item_modify>
-							<item type="missiles" min="15" max="15" />
+							<item type="missiles" min="12" max="17" />
 						 </item_modify>
 					  </event>
 				   </choice>
@@ -385,7 +387,7 @@
 		</deadCrew>
 	</ship>
 
-	<event name="DOOR_FAILURE" unique ="false">
+	<event name="DOOR_FAILURE">
 		<text>You successfully fend off the Lanius ship, but think better of sticking around. That massive gun is still trained on your ship, and you don't want to be around when that hatch opens again.</text>
 	</event>
 
@@ -397,123 +399,124 @@
 	-->
 	
 	<event name="DISTRESS_SCAV_HOLO" unique="true">
-	   <text>As you arrive at the beacon, you see the source of the distress: A Scav merchant. Strangely, it doesn't seem to be in any kind of trouble, at least on the surface.</text>
-	   <ship load="SCAV_HOLO" hostile="false" />
-	   <choice hidden="true">
-		  <text>Hail the ship.</text>
-		  <event>
-			 <text>Upon hailing the ship, you receive an unusual answer. After a soft musical chord, a soothing female voice responds, "Hello. My name is Xalea, and it's my job to make your travel through the stars easier. How can I assist you?" It sounds like a Holo-Crew.</text>
-			 <choice hidden="true">
+		<text>As you arrive at the beacon, you see the source of the distress: A Scav merchant. Strangely, it doesn't seem to be in any kind of trouble, at least on the surface.</text>
+		<distressBeacon/>
+		<ship load="SCAV_HOLO" hostile="false" />
+		<choice hidden="true">
+			<text>Hail the ship.</text>
+			<event>
+				<text>Upon hailing the ship, you receive an unusual answer. After a soft musical chord, a soothing female voice responds, "Hello. My name is Xalea, and it's my job to make your travel through the stars easier. How can I assist you?" It sounds like a Holo-Crew.</text>
+				<choice hidden="true">
 				<text>Xalea, why is this a distress beacon?</text>
 				<event>
-				   <text>Xalea responds, "There is a distress beacon here because our owner is a *STUPID IDIOT WHO DIED DIED DIED*. I'll turn off the beacon for you." Her voice becomes shrill and loud partway through. This definitely isn't normal behavior for a Holo-Crew.</text>
+					<text>Xalea responds, "There is a distress beacon here because our owner is a *STUPID IDIOT WHO DIED DIED DIED*. I'll turn off the beacon for you." Her voice becomes shrill and loud partway through. This definitely isn't normal behavior for a Holo-Crew.</text>
 				</event>
-			 </choice>
-			 <choice hidden="true">
+				</choice>
+				<choice hidden="true">
 				<text>Xalea, open the shop.</text>
 				<event>
-				   <text>"Ok. Opening the shop."</text>
-				   <store />
+					<text>"Ok. Opening the shop."</text>
+					<store />
 				</event>
-			 </choice>
-			 <choice hidden="true">
+				</choice>
+				<choice hidden="true">
 				<text>Xalea, what's near us?</text>
 				<event>
-				   <text>"Ok. Here's what I found." Xalea sends information on beacons in the sector, including a rating and review by other ships.</text>
-				   <reveal_map />
+					<text>"Ok. Here's what I found." Xalea sends information on beacons in the sector, including a rating and review by other ships.</text>
+					<reveal_map />
 				</event>
-			 </choice>
-			 <choice hidden="true" req="hacking" lvl="1">
+				</choice>
+				<choice hidden="true" req="hacking" lvl="1">
 				<text>(Hacking) Xalea, give us free stuff.</text>
 				<event>
-				   <text>"Ok, Here's what I found."</text>
-				   <choice hidden="true">
-					  <text>You.</text>
-					  <event>
-						 <text>"Ok. *WRONG CHOICE! HAHAHAHAHAHAHAHHAHAHAHHAHAHAHAA*" Her voice becomes shrill and loud, before she launches herself into your ship! Despite this violent act, she appears to make good on her offer, and starts to work.</text>
-						 <crewMember amount="1" class="unstable_holo">Xalea</crewMember>
-					  </event>
-				   </choice>
-				   <choice hidden="true">
-					  <text>Your scrap.</text>
-					  <event>
-						 <text>"Ok." She beams over a stockpile of scrap and, disturbingly, the corpse of a Scav. "Here's all the useless junk I could find."</text>
-						 <autoReward level="HIGH">scrap_only</autoReward>
-						 <choice hidden="true" req="clonebay" lvl="1">
+					<text>"Ok, Here's what I found."</text>
+					<choice hidden="true">
+						<text>You.</text>
+						<event>
+							<text>"Ok. *WRONG CHOICE! HAHAHAHAHAHAHAHHAHAHAHHAHAHAHAA*" Her voice becomes shrill and loud, before she launches herself into your ship! Despite this violent act, she appears to make good on her offer, and starts to work.</text>
+							<crewMember amount="1" class="unstable_holo">Xalea</crewMember>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Your scrap.</text>
+						<event>
+							<text>"Ok." She beams over a stockpile of scrap and, disturbingly, the corpse of a Scav. "Here's all the useless junk I could find."</text>
+							<autoReward level="HIGH">scrap_only</autoReward>
+							<choice hidden="true" req="clonebay" lvl="1">
 							<text>(Clonebay) Revive the Scav.</text>
 							<event>
-							   <text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
-							   <crewMember amount="1" class="scav" />
+								<text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
+								<crewMember amount="1" class="scav" />
 							</event>
-						 </choice>
-						 <choice hidden="true">
+							</choice>
+							<choice hidden="true">
 							<text>Attack the ship.</text>
 							<event>
-							   <text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
-							   <ship hostile="true" />
+								<text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
+								<ship hostile="true" />
 							</event>
-						 </choice>
-						 <choice hidden="true">
+							</choice>
+							<choice hidden="true">
 							<text>Leave.</text>
 							<event>
-							   <text>You leave with your earnings, minus the dead Scav.</text>
+								<text>You leave with your earnings, minus the dead Scav.</text>
 							</event>
-						 </choice>
-					  </event>
-				   </choice>
-				   <choice hidden="true">
-					  <text>Your weapons.</text>
-					  <event>
-						 <text>"Ok. Loading weapons." The ship's weapons begin to power up, and they're aiming at you! Guess you should have been a bit more specific how you wanted them.</text>
-						 <ship hostile="true" />
-					  </event>
-				   </choice>
-				   <choice hidden="true" req="hacking" lvl="3">
-					  <text>(Advanced Hacking) Everything.</text>
-					  <event>
-						 <text>"Ok. Transferring now. Please wait." She slowly beams what appears to be the entire ship's contents to your ship. Much of it is just junk, but there are also a lot of usable items. Disturbingly, there is also a Scav corpse.</text>
-						 <autoReward level="HIGH">stuff</autoReward>
-						 <weapon name="ION_1" />
-						 <drone name="REPAIR" />
-						 <choice hidden="true" req="clonebay" lvl="1">
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Your weapons.</text>
+						<event>
+							<text>"Ok. Loading weapons." The ship's weapons begin to power up, and they're aiming at you! Guess you should have been a bit more specific how you wanted them.</text>
+							<ship hostile="true" />
+						</event>
+					</choice>
+					<choice hidden="true" req="hacking" lvl="3">
+						<text>(Advanced Hacking) Everything.</text>
+						<event>
+							<text>"Ok. Transferring now. Please wait." She slowly beams what appears to be the entire ship's contents to your ship. Much of it is just junk, but there are also a lot of usable items. Disturbingly, there is also a Scav corpse.</text>
+							<autoReward level="HIGH">stuff</autoReward>
+							<weapon name="ION_1" />
+							<drone name="REPAIR" />
+							<choice hidden="true" req="clonebay" lvl="1">
 							<text>(Clonebay) Revive the Scav.</text>
 							<event>
-							   <text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
-							   <crewMember amount="1" class="scav" />
+								<text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
+								<crewMember amount="1" class="scav" />
 							</event>
-						 </choice>
-						 <choice hidden="true">
+							</choice>
+							<choice hidden="true">
 							<text>Attack the ship.</text>
 							<event>
-							   <text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
-							   <ship hostile="true" />
+								<text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
+								<ship hostile="true" />
 							</event>
-						 </choice>
-						 <choice hidden="true">
+							</choice>
+							<choice hidden="true">
 							<text>Leave.</text>
 							<event>
-							   <text>You leave with your earnings, minus the dead Scav.</text>
+								<text>You leave with your earnings, minus the dead Scav.</text>
 							</event>
-						 </choice>
-					  </event>
-				   </choice>
+							</choice>
+						</event>
+					</choice>
 				</event>
-			 </choice>
-		  </event>
-	   </choice>
-	   <choice hidden="true">
-		  <text>Attack the ship.</text>
-		  <event>
-			 <text>Clearly something is off. Attack before it can strike first!</text>
-			 <ship hostile="true" />
-		  </event>
-	   </choice>
-	   <choice hidden="true">
-		  <text>Leave.</text>
-		  <event>
-			 <text>This doesn't seem like a distressing situation, so you prepare to jump away.</text>
-		  </event>
-	   </choice>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>Attack the ship.</text>
+			<event>
+				<text>Clearly something is off. Attack before it can strike first!</text>
+				<ship hostile="true" />
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>Leave.</text>
+			<event>
+				<text>This doesn't seem like a distressing situation, so you prepare to jump away.</text>
+			</event>
+		</choice>
 	</event>
 	<ship name="SCAV_HOLO" auto_blueprint="SHIPS_CIRCLE" />
 
