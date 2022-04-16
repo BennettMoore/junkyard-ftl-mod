@@ -99,7 +99,8 @@
 	</eventList>
 
 	<eventList name="DISTRESS_BEACON_SCAV">
-		<!--<event load="SCAV_STATION_DISTRESS"/>-->
+		<event load="SCAV_STATION_DISTRESS"/>
+		<event load="DISTRESS_SCAV_HOLO"/>
 		<!--<event load="DISTRESS_SCAV_REBEL"/>-->
 		<!--<event load="DISTRESS_SCAV_REACTOR"/>-->
 
@@ -179,7 +180,7 @@
 	-->
 
 	<event name="SCAV_STATION_DISTRESS" unique="false">
-		<text>You spot an unnaturally derelict looking Scav ship floating near the beacon. You recieve a message from the ship, but from a Lanius, not a Scav: "No interfere. Anger. Scav cause payback." In the background a desperate Scav can faintly be heard shouting and banging on a door.</text>
+		<text>You spot an unnaturally derelict looking Scav ship floating near the beacon. You recieve a message from the ship, but from a Lanius, not a Scav: "No interfere. Anger. Scav cause payback." In the background a desperate Scav can faintly be heard shouting and banging on a door. You REALLY don't think it's a good idea to destroy that ship while the Scav is still trapped in there.</text>
 		<choice>
 			<text>Move to engage.</text>
 			<event load="SCAV_STATION_DISTRESS_LIST"/>
@@ -200,6 +201,7 @@
 			<ship load="SCAV_LANIUS_STATION" hostile="true"/>
 		</event>
 	</eventList>
+	
 	<eventList name="SAVE_SCAV_STATION">
 		<event>
 			<text>Despite your best efforts, the Scav suffocated.</text>
@@ -237,13 +239,13 @@
 				<text>(Lanius Crew) Send your Lanius to investigate.</text>
 				<event>
 					<text>After looking through the Scav's junk, your crew-member's eyes lock on a roundish metal orb, which they snatch up quickly. Upon returning to the ship, all they will talk about is, "Precious. Stupid Scav-creature. Anger at thief justified." Your crew-member then begins to tell you galactic co-ordinates while continuing their poorly-translated tirade.</text>
-					<quest event="LANIUS_DOOR"/> <!--TODO: Work on Lanius Door-->
+					<quest event="LANIUS_DOOR"/>
 				</event>
 			</choice>
 			<choice req="scav" hidden="true">
 				<text>(Scav Crew) Let me t#ke a look thr##gh it!</text>
 				<event>
-					<text></text>	<!--TODO: Work on final option-->
+					<text>After looking through the Scav's junk, your crew-member begins snatching up a number of seemingly random parts, before sitting down and beginning to work. The Scav exclaims, "Oh d#de, that's genius! But m#ybe you shoul- =#####=" as it's modulator crackles to static it helps your crew member. Soon, you see they are making some sort of weapon.</text>	<!--TODO: Work on final option-->
 					<autoReward level="LOW">weapon</autoReward>
 
 					<damage amount="-10"/>
@@ -262,10 +264,65 @@
 		</event>
 	</eventList>
 
-	<event name="LANIUS_DOOR" unique="true">	<!--TODO: Polish Lanius Door event-->
+	<event name="LANIUS_DOOR" unique="false">	<!--TODO: Polish Lanius Door event-->
 	   <text>Upon arriving at the beacon, you spot a massive Lanius structure. You presume it must have been drifting for years to have traveled this far.</text>
-	   <choice hidden="true" req="anaerobic">
-		  <text>(Lanius Crew) Ask the Lanius what to do.</text>
+	   <choice hidden="true">
+		  <text>Shoot at the structure.</text>						<!--Attack-->
+		  <event>
+			 <text>You fire on the structure. Suddenly, it powers up! A large weapon extends from an opening in the top, and from a hatch in the side a Lanius ship hurtles towards you!</text>
+			 <environment type="PDS" target="player" />
+			 <ship load="DOOR_DEFENDER" hostile="true" />
+		  </event>
+	   </choice>
+	   <choice hidden="true">
+		  <text>Hail the structure.</text>							<!--Don't Attack-->
+		  <event>
+			 <text>You hail the structure, and attempt to explain who you are and why you're there. A Lanius voice stops you, "Quiet! Sleeping. Leave or die."</text>
+			 <choice hidden="true">
+				<text>Explain what brought you here.</text>		<!--Ok option-->
+				<event>
+				   <text>You explain how you obtained a strange orb and that a Lanius had told you how to reach this place. The voice begins to interrupt you again, but upon hearing your words replies coldly, "Give. NOW."</text>
+				   <choice hidden="true">
+					  <text>Give up the orb.</text>			<!--Repair-->
+					  <event>
+						 <text>You allow a very angry Lanius to board your ship and remove the orb from your possession. It reluctantly thanks you for "Finding precious." and applies a metallic paste to the hull of your ship.</text>
+						 <damage amount="-5" />
+					  </event>
+				   </choice>
+				   <choice hidden="true">
+					  <text>Negotiate.</text>				<!--Crew-->
+					  <event>
+						 <text>The Lanius angrily replies, "Fine." They come aboard your ship and take the orb. After safely putting the orb away, a single Lanius returns to your ship. It sleepily tells you, "Greetings... I am trade... Reluctant."</text>
+						 <crewMember repair="1" amount="1" class="anaerobic">Trade</crewMember>
+					  </event>
+				   </choice>
+				   <choice hidden="true">
+					  <text>Refuse.</text>					<!--Attack-->
+					  <event>
+						 <text>The Lanius becomes angry, "NO. STUPID STUPID SCAV-FRIEND. TAKE."</text>
+						 <ship load="DOOR_DEFENDER" hostile="true" />
+					  </event>
+				   </choice>
+				</event>
+			 </choice>
+			 <choice hidden="true">
+				<text>Attack the structure.</text>				<!--Attack-->
+				<event>
+				   <text>Indignant at the Lanius' response, you open fire. Suddenly, the structure powers up, and from a hatch in the side a Lanius ship emerges to attack!</text>
+				   <environment type="PDS" target="player" />
+				   <ship load="DOOR_DEFENDER" hostile="true" />
+				</event>
+			 </choice>
+			 <choice hidden="true">
+				<text>Leave.</text>								<!--Back Out-->
+				<event>
+				   <text>May as well let sleeping Lanius lie. You power up your drive and prepare to jump away.</text>
+				</event>
+			 </choice>
+		  </event>
+	   </choice>
+		<choice hidden="true" req="anaerobic">
+		  <text>(Lanius Crew) Ask the Lanius what to do.</text>		<!--"Correct" answer-->
 		  <event>
 			 <text>Your crew-member holds out the metal orb and instructs the crew to bring the ship closer to the structure. As you approach, a gargantuan hatch opens in front of you.</text>
 			 <choice hidden="true">
@@ -273,20 +330,20 @@
 				<event>
 				   <text>Once inside the structure, the hatch shuts behind you. You are surrounded by dormant Lanius ships as well as hundreds of Lanius sleeping pods. A small party of Lanius come aboard your ship, and your crew-member chats happily with them, showing off the orb. The Lanius turn to you and say "Thanks much. Name your gift."</text>
 				   <choice hidden="true">
-					  <text>A new ship.</text>
+					  <text>A new ship.</text>					<!--Unlock Uber Lanius Ship-->
 					  <event>
 						 <text>"Yes. Agree." One of the Lanius ships, different from the rest, powers up and begins to slowly hover towards you. From inside, a Lanius hails you, "We send. Federation make changes. Get ship with air... Ok?" Without waiting for a response, the ship exits the structure and jumps away, back towards where you came from.</text>
 					  </event>
 				   </choice>
 				   <choice hidden="true">
-					  <text>Some new crew.</text>
+					  <text>Some new crew.</text>				<!--Get 3 new crew-->
 					  <event>
 						 <text>"Yes. Will join." The Lanius simply stand around, waiting to be given orders.</text>
-						 <crewMember pilot="1" engines="1" weapons="1" amount="1" class="anaerobic" />
+						 <crewMember combat="1" amount="3" class="anaerobic" />
 					  </event>
 				   </choice>
 				   <choice hidden="true">
-					  <text>Anything you can spare.</text>
+					  <text>Anything you can spare.</text>		<!--Fuel and Missles-->
 					  <event>
 						 <text>"Yes. Give." The Lanius give you large containers of fuel and a number of missiles. One Lanius jokes with your crew-member, "Do not consume. 'Too spicy'... as Human speak."</text>
 						 <autoReward level="HIGH">fuel_only</autoReward>
@@ -296,7 +353,7 @@
 					  </event>
 				   </choice>
 				   <choice hidden="true" req="scav">
-					  <text>(Scav Crew) Some spare parts</text>
+					  <text>(Scav Crew) Some spare parts</text>	<!--Augment-->
 					  <event>
 						 <text>The Lanius' good spirits dissolve instantly. "Yes... Scav-thief... Scav-creature can have parts." The Lanius begrudgingly allow your Scav crew-member to take some pieces from a few dormant Lanius ships and the Scav quickly cobbles them together into upgrades for your ship.</text>
 						 <autoReward level="HIGH">augment</autoReward>
@@ -308,62 +365,7 @@
 		  </event>
 	   </choice>
 	   <choice hidden="true">
-		  <text>Shoot at the structure.</text>
-		  <event>
-			 <text>You fire on the structure. Suddenly, it powers up! A large weapon extends from an opening in the top, and from a hatch in the side a Lanius ship hurtles towards you!</text>
-			 <environment type="PDS" target="player" />
-			 <ship load="DOOR_DEFENDER" hostile="true" />
-		  </event>
-	   </choice>
-	   <choice hidden="true">
-		  <text>Hail the structure.</text>
-		  <event>
-			 <text>You hail the structure, and attempt to explain who you are and why you're there. A Lanius voice stops you, "Quiet! Sleeping. Leave or die."</text>
-			 <choice hidden="true">
-				<text>Explain what brought you here.</text>
-				<event>
-				   <text>You explain how you obtained a strange orb and that a Lanius had told you how to reach this place. The voice begins to interrupt you again, but upon hearing your words replies coldly, "Give. NOW."</text>
-				   <choice hidden="true">
-					  <text>Give up the orb.</text>
-					  <event>
-						 <text>You allow a very angry Lanius to board your ship and remove the orb from your possession. It reluctantly thanks you for "Finding precious." and applies a metallic paste to the hull of your ship.</text>
-						 <damage amount="-5" />
-					  </event>
-				   </choice>
-				   <choice hidden="true">
-					  <text>Negotiate.</text>
-					  <event>
-						 <text>The Lanius angrily replies, "Fine." They come aboard your ship and take the orb. After safely putting the orb away, a single Lanius returns to your ship. It sleepily tells you, "Greetings... I am trade... Reluctant."</text>
-						 <crewMember repair="1" amount="1" class="anaerobic">Trade</crewMember>
-					  </event>
-				   </choice>
-				   <choice hidden="true">
-					  <text>Refuse.</text>
-					  <event>
-						 <text>The Lanius becomes angry, "NO. STUPID STUPID SCAV-FRIEND. TAKE."</text>
-						 <ship load="DOOR_DEFENDER" hostile="true" />
-					  </event>
-				   </choice>
-				</event>
-			 </choice>
-			 <choice hidden="true">
-				<text>Attack the structure.</text>
-				<event>
-				   <text>Indignant at the Lanius' response, you open fire. Suddenly, the structure powers up, and from a hatch in the side a Lanius ship emerges to attack!</text>
-				   <environment type="PDS" target="player" />
-				   <ship load="DOOR_DEFENDER" hostile="true" />
-				</event>
-			 </choice>
-			 <choice hidden="true">
-				<text>Leave.</text>
-				<event>
-				   <text>May as well let sleeping Lanius lie. You power up your drive and prepare to jump away.</text>
-				</event>
-			 </choice>
-		  </event>
-	   </choice>
-	   <choice hidden="true">
-		  <text>Leave.</text>
+		  <text>Leave.</text>										<!--Back Out-->
 		  <event>
 			 <text>You don't push your luck. There could be hundreds of angry Lanius in there waiting to attack. If only you understood what that orb did, and how to use it.</text>
 		  </event>
@@ -372,19 +374,19 @@
 	
 	<ship name="DOOR_DEFENDER" auto_blueprint="SHIPS_LANIUS">
 		<destroyed>
-			<text>DEATH TEXT HERE</text>
+			<text>The Lanius ship breaks apart into scrap. You manage to capture a few pieces while dodging attacks from the structure.</text>
 			<autoReward level="LOW">standard</autoReward>
 			<event load="DOOR_FAILURE"/>
 		</destroyed>
 		<deadCrew>
-			<text>DEATH TEXT HERE</text>
+			<text>The Lanius ship falls silent, and you're able to quickly scavenge a few pieces from it.</text>
 			<autoReward level="MID">stuff</autoReward>
 			<event load="DOOR_FAILUE"/>
 		</deadCrew>
 	</ship>
 
-	<event name="DOOR_FAILURE" unique ="false"> <!--TODO: Work on Door Failure-->
-		<!--Player defeated Lanius but was unable to enter Lanius structure-->
+	<event name="DOOR_FAILURE" unique ="false">
+		<text>You successfully fend off the Lanius ship, but think better of sticking around. That massive gun is still trained on your ship, and you don't want to be around when that hatch opens again.</text>
 	</event>
 
 	<!--
@@ -393,6 +395,127 @@
 		Events that havea distress beacon  
 	**********
 	-->
+	
+	<event name="DISTRESS_SCAV_HOLO" unique="true">
+	   <text>As you arrive at the beacon, you see the source of the distress: A Scav merchant. Strangely, it doesn't seem to be in any kind of trouble, at least on the surface.</text>
+	   <ship load="SCAV_HOLO" hostile="false" />
+	   <choice hidden="true">
+		  <text>Hail the ship.</text>
+		  <event>
+			 <text>Upon hailing the ship, you receive an unusual answer. After a soft musical chord, a soothing female voice responds, "Hello. My name is Xalea, and it's my job to make your travel through the stars easier. How can I assist you?" It sounds like a Holo-Crew.</text>
+			 <choice hidden="true">
+				<text>Xalea, why is this a distress beacon?</text>
+				<event>
+				   <text>Xalea responds, "There is a distress beacon here because our owner is a *STUPID IDIOT WHO DIED DIED DIED*. I'll turn off the beacon for you." Her voice becomes shrill and loud partway through. This definitely isn't normal behavior for a Holo-Crew.</text>
+				</event>
+			 </choice>
+			 <choice hidden="true">
+				<text>Xalea, open the shop.</text>
+				<event>
+				   <text>"Ok. Opening the shop."</text>
+				   <store />
+				</event>
+			 </choice>
+			 <choice hidden="true">
+				<text>Xalea, what's near us?</text>
+				<event>
+				   <text>"Ok. Here's what I found." Xalea sends information on beacons in the sector, including a rating and review by other ships.</text>
+				   <reveal_map />
+				</event>
+			 </choice>
+			 <choice hidden="true" req="hacking" lvl="1">
+				<text>(Hacking) Xalea, give us free stuff.</text>
+				<event>
+				   <text>"Ok, Here's what I found."</text>
+				   <choice hidden="true">
+					  <text>You.</text>
+					  <event>
+						 <text>"Ok. *WRONG CHOICE! HAHAHAHAHAHAHAHHAHAHAHHAHAHAHAA*" Her voice becomes shrill and loud, before she launches herself into your ship! Despite this violent act, she appears to make good on her offer, and starts to work.</text>
+						 <crewMember amount="1" class="unstable_holo">Xalea</crewMember>
+					  </event>
+				   </choice>
+				   <choice hidden="true">
+					  <text>Your scrap.</text>
+					  <event>
+						 <text>"Ok." She beams over a stockpile of scrap and, disturbingly, the corpse of a Scav. "Here's all the useless junk I could find."</text>
+						 <autoReward level="HIGH">scrap_only</autoReward>
+						 <choice hidden="true" req="clonebay" lvl="1">
+							<text>(Clonebay) Revive the Scav.</text>
+							<event>
+							   <text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
+							   <crewMember amount="1" class="scav" />
+							</event>
+						 </choice>
+						 <choice hidden="true">
+							<text>Attack the ship.</text>
+							<event>
+							   <text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
+							   <ship hostile="true" />
+							</event>
+						 </choice>
+						 <choice hidden="true">
+							<text>Leave.</text>
+							<event>
+							   <text>You leave with your earnings, minus the dead Scav.</text>
+							</event>
+						 </choice>
+					  </event>
+				   </choice>
+				   <choice hidden="true">
+					  <text>Your weapons.</text>
+					  <event>
+						 <text>"Ok. Loading weapons." The ship's weapons begin to power up, and they're aiming at you! Guess you should have been a bit more specific how you wanted them.</text>
+						 <ship hostile="true" />
+					  </event>
+				   </choice>
+				   <choice hidden="true" req="hacking" lvl="3">
+					  <text>(Advanced Hacking) Everything.</text>
+					  <event>
+						 <text>"Ok. Transferring now. Please wait." She slowly beams what appears to be the entire ship's contents to your ship. Much of it is just junk, but there are also a lot of usable items. Disturbingly, there is also a Scav corpse.</text>
+						 <autoReward level="HIGH">stuff</autoReward>
+						 <weapon name="ION_1" />
+						 <drone name="REPAIR" />
+						 <choice hidden="true" req="clonebay" lvl="1">
+							<text>(Clonebay) Revive the Scav.</text>
+							<event>
+							   <text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
+							   <crewMember amount="1" class="scav" />
+							</event>
+						 </choice>
+						 <choice hidden="true">
+							<text>Attack the ship.</text>
+							<event>
+							   <text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
+							   <ship hostile="true" />
+							</event>
+						 </choice>
+						 <choice hidden="true">
+							<text>Leave.</text>
+							<event>
+							   <text>You leave with your earnings, minus the dead Scav.</text>
+							</event>
+						 </choice>
+					  </event>
+				   </choice>
+				</event>
+			 </choice>
+		  </event>
+	   </choice>
+	   <choice hidden="true">
+		  <text>Attack the ship.</text>
+		  <event>
+			 <text>Clearly something is off. Attack before it can strike first!</text>
+			 <ship hostile="true" />
+		  </event>
+	   </choice>
+	   <choice hidden="true">
+		  <text>Leave.</text>
+		  <event>
+			 <text>This doesn't seem like a distressing situation, so you prepare to jump away.</text>
+		  </event>
+	   </choice>
+	</event>
+	<ship name="SCAV_HOLO" auto_blueprint="SHIPS_CIRCLE" />
 
 	<!--@author Subset Games-->
 

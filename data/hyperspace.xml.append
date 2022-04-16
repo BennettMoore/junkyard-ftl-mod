@@ -15,7 +15,7 @@
 				<deathSound>engiDeath</deathSound>
 			</deathSounds>
 			<animSheet>scav</animSheet>
-			
+			<animBase>rock</animBase>
 		</race>
 		
 		<race name="unstable_holo">
@@ -79,11 +79,10 @@
 
 	<ships removeFirstShipPage="false">
 
-		<ship name="PLAYER_SHIP_JUNK" b="true" c="true" secret="false" noAppend="false" splitUnlockQuestAchievement="false" splitVictoryAchievement="false">
+		<ship name="PLAYER_SHIP_JUNK" b="true" c="true" secret="false" noAppend="false" splitUnlockQuestAchievement="false" splitVictoryAchievement="true">
 			<unlock variant="a">
 				<type>4</type>
 				<!--Unlocked by event-->
-				<!-- TODO: Get Event unlock functioning properly-->
 			</unlock>
 			<unlock variant="b">
 				<type>5</type> <!--Must beat flagship with Junkyard A-->
