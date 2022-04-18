@@ -9,7 +9,7 @@ It is recommended that you use the [Slipstream Mod Manager](https://subsetgames.
 ## Installation
 For stable versions of this mod, there should be a .ftl file that can be simply pasted into your mods folder, but if you want to play a version that is WIP, the .ftl file may not always be up-to-date. Listed below are instructions on how to ensure you are using the most recent mod files:
 
-1. Select the **data** and **img** directories and compress them into a .zip file
+1. Select the **data** and **img** directories and compress them into a single .zip file
 2. Rename the .zip file to **Junkyard.ftl**
 3. Place the newly created .ftl file into your mods folder
 
@@ -25,15 +25,15 @@ This is primarily a side project, so I don't intend to set deadlines for myself.
 		- Give Holos a unique trait ☑
 	- 3rd Race? ☐
 - Ships ☐
-	- Federation "Junkyard" ☐
+	- Federation "Junkyard" ☑
 		- Make sprites for all variants ☑
 		- Make blueprints for all variants ☑
-		- Allow each variant to be unlocked ☐
+		- Allow each variant to be unlocked ☑
 	- Amalgam ☐
 		- Make sprites for all variants ☐
 		- Make blueprints for all variants ☐
 		- Allow each variant to be unlocked ☐
-	- 3rd ship ☐
+	- New Lanius Ship ☐
 		- Make sprites for all variants ☐
 		- Make blueprints for all variants ☐
 		- Allow each variant to be unlocked ☐
@@ -52,7 +52,7 @@ This is primarily a side project, so I don't intend to set deadlines for myself.
 	- Flak Drone ☐
 - Sectors ☐
 	- Scav Sector/Homeworld ☐
-		- Create basic sectors ☐
+		- Create basic sectors ☑
 		- Create Scav-Specific events ☐
 	- Holo Sector? ☐
 		- Create basic sectors ☐
