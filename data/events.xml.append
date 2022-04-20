@@ -101,6 +101,8 @@
 	<eventList name="DISTRESS_BEACON_SCAV">
 		<event load="SCAV_STATION_DISTRESS"/>
 		<event load="DISTRESS_SCAV_HOLO"/>
+		<event load="DISTRESS_SCAV_BROKEN"/>
+		<event load="DISTRESS_SCAV_GREEDY"/>
 		<!--<event load="DISTRESS_SCAV_REBEL"/>-->
 		<!--<event load="DISTRESS_SCAV_REACTOR"/>-->
 
@@ -140,7 +142,7 @@
 	<textList name="START_BEACON_SCAV">
 		<text>Your sensors indicate a major space-trash cluster in this sector. It's bound to be home to some Scavengers, slowly turning all the junk into usable items. Perhaps you can take advantage of this race's odd fascination.</text>
 		<text>This sector contains an unusually high amount of metal. You doubt much of it will be usable scrap, but it's bound to have attracted Scavengers to it. You can only hope the Scavs have been turning that junk into something you can use against the Rebels.</text>
-		<text>This sector contains an unusually high amount of metal. You doubt much of it will be usable scrap, but it's bound to have attracted Scavengers to it. How they manage to stave off the Lanius is a mystery to you, but thankfully it doesn't apply to Federation crew.</text>
+		<text>This sector contains an unusually high amount of metal. You doubt much of it will be usable scrap, but it's bound to have attracted Scavengers to it. How they manage to stave off the Lanius is a mystery to you, but thankfully it doesn't affect Federation crew.</text>
 	</textList>
 
 	<!--
@@ -167,6 +169,11 @@
 	</event>
 
 	<event name="SCAV_PIRATE_FIGHT">
+		<text>A ragged pirate ship emerges from behind the remains of a Rebel ship and hails you, "Finally! Someone with some damn scrap! If I wasn't gonna kill you I'd buy you a drink!" Prepare to fight!</text>
+		<ship load="PIRATE" hostile="true"/>
+	</event>
+	
+	<event name="SCAV_SLUG_FIGHT">
 		<text>A ragged pirate ship emerges from behind the remains of a Rebel ship and hails you, "Finally! Someone with some damn scrap! If I wasn't gonna kill you I'd buy you a drink!" Prepare to fight!</text>
 		<ship load="PIRATE" hostile="true"/>
 	</event>
@@ -245,7 +252,7 @@
 			<choice req="scav" hidden="true">
 				<text>(Scav Crew) Let me t#ke a look thr##gh it!</text>
 				<event>
-					<text>After looking through the Scav's junk, your crew-member begins snatching up a number of seemingly random parts, before sitting down and beginning to work. The Scav exclaims, "Oh d#de, that's genius! But m#ybe you shoul- =#####=" as it's modulator crackles to static it helps your crew member. Soon, you see they are making some sort of weapon.</text>	<!--TODO: Work on final option-->
+					<text>After looking through the Scav's junk, your crew-member begins snatching up a number of seemingly random parts, before sitting down and beginning to work. The Scav exclaims, "Oh d#de, that's genius! But m#ybe you shoul- =#####=" as it's vocalizer crackles to static it helps your crew member. Soon, you see they are making some sort of weapon.</text>	<!--TODO: Work on final option-->
 					<autoReward level="LOW">weapon</autoReward>
 
 					<damage amount="-10"/>
@@ -332,7 +339,15 @@
 				   <choice hidden="true">
 					  <text>A new ship.</text>					<!--Unlock Uber Lanius Ship-->
 					  <event>
-						 <text>"Yes. Agree." One of the Lanius ships, different from the rest, powers up and begins to slowly hover towards you. From inside, a Lanius hails you, "We send. Federation make changes. Get ship with air... Ok?" Without waiting for a response, the ship exits the structure and jumps away, back towards where you came from.</text>
+						 <text>"Yes. Agree." One of the Lanius ships, different from the rest, powers up and begins to slowly hover towards you. From inside, a Lanius hails you, "Will send. Federation make changes... Get ship with air... Ok?" Without waiting for a response, the ship exits the structure and jumps away, back towards where you came from.</text>
+						  <choice hidden="false">
+							  <text>So... where's my ship?</text>				<!--TODO: Replace this with ship reward.-->
+							  <event>
+								  <text>The Lanius hails you again, "Apologies. Shipmaker is lazy... Hasn't built proper ship. Take instead." They then hand you a large pile of scrap and install an augment in your ship!</text>
+								  <autoReward level="HIGH">scrap_only</autoReward>
+								  <autoReward level="HIGH">augment</autoReward>
+							  </event>
+						  </choice>												<!--TODO: Replace above code with ship reward.-->
 					  </event>
 				   </choice>
 				   <choice hidden="true">
@@ -358,7 +373,7 @@
 					  <text>(Scav Crew) Some spare parts</text>	<!--Augment-->
 					  <event>
 						 <text>The Lanius' good spirits dissolve instantly. "Yes... Scav-thief... Scav-creature can have parts." The Lanius begrudgingly allow your Scav crew-member to take some pieces from a few dormant Lanius ships and the Scav quickly cobbles them together into upgrades for your ship.</text>
-						 <autoReward level="HIGH">augment</autoReward>
+						 <autoReward level="MED">augment</autoReward>
 						 <damage amount="-3" />
 					  </event>
 				   </choice>
@@ -435,6 +450,7 @@
 						<event>
 							<text>"Ok. *WRONG CHOICE! HAHAHAHAHAHAHAHHAHAHAHHAHAHAHAA*" Her voice becomes shrill and loud, before she launches herself into your ship! Despite this violent act, she appears to make good on her offer, and starts to work.</text>
 							<crewMember amount="1" class="unstable_holo">Xalea</crewMember>
+							<damage amount="1" system="random" effect="breach" />
 						</event>
 					</choice>
 					<choice hidden="true">
@@ -519,6 +535,565 @@
 		</choice>
 	</event>
 	<ship name="SCAV_HOLO" auto_blueprint="SHIPS_CIRCLE" />
+	
+	<event name="DISTRESS_SCAV_BROKEN" unique="false">
+		<text>"H#y dude! What's up? My eng#nes totally just- =#######= and if y#u could spare someth#ng I'd- =########= "</text>
+		<distressBeacon/>
+		<ship load="SCAV_CIV" hostile="false" />
+		<choice hidden="false">
+			<text>Give them some scrap.</text>
+			<event>
+				<text>"Th#nks bro! Appr#ciate it!" </text>
+				<item_modify>
+					<item type="scrap" min="-25" max="-25" />
+				</item_modify>
+				<choice hidden="true">
+					<text>Ask for a reward.</text>
+					<event load="SCAV_BROKEN_REWARDS"/>
+				</choice>
+				<choice hidden="true">
+					<text>Prepare to jump.</text>
+					<event>
+						<text>"Th#nks so much dude! I t#tally #we you! Here's a little s#mething for your trouble."</text>
+						<autoReward level="LOW">standard</autoReward>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>Apologize, wish them luck, and continue on.</text>
+			<event>
+				<text>"Oh. Th#t's cool. We'll j#st wait here."</text>
+			</event>
+		</choice>
+		<choice hidden="true" req="engi">
+			<text>(Engi Crew) Perhaps their design is flawed.</text>
+			<event>
+				<text>Your crew-member begins walking the Scav through a solution, and suddenly their ship powers up. "Sw##t! Th#t was so dope! I guess y#u can take this extra- =########= "</text>
+				<autoReward level="LOW">scrap_only</autoReward>
+				<choice hidden="true">
+					<text>Ask for a reward.</text>
+					<event load="SCAV_BROKEN_REWARDS"/>
+				</choice>
+				<choice hidden="true">
+					<text>Prepare to jump.</text>
+					<event>
+						<text>"Th#nks so much dude! I t#tally #we you! Here's a little s#mething for your trouble."</text>
+						<autoReward level="LOW">standard</autoReward>
+					</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="false" req="REPAIR_ARM">
+			<text>(Repair Arm) Fix their ship for them.</text>
+			<event>
+				<text>"W#cked! Love th#t tech." You're able to repair their engines with minimal scrap.</text>
+				<item_modify>
+					<item type="scrap" min="-15" max="-5" />
+				</item_modify>
+				<choice hidden="true">
+					<text>Ask for a reward.</text>
+					<event load="SCAV_BROKEN_REWARDS"/>
+				</choice>
+				<choice hidden="true">
+					<text>Prepare to jump.</text>
+					<event>
+						<text>"Th#nks so much dude! I t#tally #we you! Here's a little s#mething for your trouble."</text>
+						<autoReward level="LOW">standard</autoReward>
+					</event>
+				</choice>
+			</event>
+		</choice>
+	</event>
+
+	<eventList name="SCAV_BROKEN_REWARDS">
+		<event>
+			<text>"Wh#t? Oh, yeah! Here's s#me fuel!"</text>
+			<autoReward level="RANDOM">fuel_only</autoReward>
+		</event>
+		<event>
+			<text>"S#re! Here's s#me of my sp#re supplies!"</text>
+			<autoReward level="MED">stuff</autoReward>
+		</event>
+		<event>
+			<text>"Sorry dude, th#re was a good reas#n why I couldn't aff#rd to r#pair my #wn- =#######="</text>
+		</event>
+		<event>
+			<text>"Yeah! L#t me try to boost y#ur reactor!"</text>
+			<upgrade amount="1" system="reactor"/>
+		</event>
+		<event>
+			<text>"I've #ctually got this weapon prot#type I was w#rking on. Why d#n't you take it?"</text>
+			<autoReward level="LOW">weapon</autoReward>
+		</event>
+		<event>
+			<text>"I've #ctually got this weapon prot#type I was w#rking on. Why d#n't you take it?"</text>
+			<autoReward level="HIGH">weapon</autoReward>
+		</event>
+		<event>
+			<text>"Y#ah, totally! I've g#t a pair of- =##########= -you sh#uld take them!"</text>
+			<drone name="COMBAT_0" />
+			<drone name="DEFENSE_0" />
+		</event>
+		<event>
+			<text>"Huh? D#de, you're j#king, right? I d#n't have anyth#ng exc#pt enough fu#l to get me h#me."</text>
+		</event>
+		<event>
+			<text>"Y#ah dude! I've g#t some h#memade missiles I c#uld give you! L#t me be#m it over!" As the Scav teleports the missiles to your ship, something sets them off, damaging your hull!</text>
+			<damage amount="2" system="random" effect="breach" />
+			<damage amount="1" system="random" effect="breach" />
+		</event>
+		<event>
+			<text>"S#re! I've g#t this... refurbished Holo-Cr#w you could h#ve!" The Scav beams over a heavily damaged, but apparently docile Holo-Crew.</text>
+			<crewMember repair="2" amount="1" class="unstable_holo"></crewMember>
+		</event>
+		<event>
+			<text>"S#re! I've g#t this... refurbished Holo-Cr#w you could h#ve!" The Scav beams over a heavily damaged Holo-Crew. As soon as it appears on your ship, it says, "Hello. It appears you are *NOT MY CRUEL MASTER*. To change ownership of this Holo-Crew, please *DIE DIE DIE DIE!*"</text>
+			<boarders min="1" max="1" class="unstable_holo" />
+		</event>
+	</eventList>
+	
+	<event name="DISTRESS_SCAV_GREEDY" unique="true">
+		<text>"H#y dude! What's up? My eng#nes totally just- =#######= and if y#u could spare someth#ng I'd- =########= "</text>
+		<distressBeacon/>
+		<ship load="SCAV_CIV" hostile="false" />
+		<choice hidden="false">
+			<text>Give them some scrap.</text>															<!--Level 1a. Anger:0-->
+			<event>
+				<text>"Th#nks bro! Appr#ciate it! Oh, and #lso I- =######= s#me drone parts too. I tr#ed using th#m to fix the eng#nes, but it t#tally didn't work." </text>
+				<item_modify>
+				<item type="scrap" min="-25" max="-25" />
+				</item_modify>
+				<choice hidden="false">
+				<text>Give them some drone parts too.</text>											<!--Level 2a. Anger:0 -->
+				<event>
+					<text>"R#dical! Oh, and #lso I lost all my m#ssiles wh#n I- =#########= so c#uld you help me #ut man?"</text>
+					<item_modify>
+						<item type="drones" min="-5" max="-2" />
+					</item_modify>
+					<choice hidden="false">	
+						<text>Give them some missiles too.</text>										<!--Level 3a. Anger:0 -->
+						<event>
+							<text>"D#de, you are the b#mb! All I n#ed is s#me scr#p and I'll be g#od to g#!"</text>
+							<item_modify>
+							<item type="missiles" min="-7" max="-3" />
+							</item_modify>
+							<choice hidden="false">
+							<text>Give them even more scrap...</text>									<!--Level 4a. Anger:0 -->
+							<event>
+								<text>"W#cked! Any ch#nce I c#uld get some dr#ne parts? I r#ally need s#me."</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+								<choice hidden="false">
+									<text>Give them... even more drone parts...</text>					<!--Level 5a. Anger:0 -->
+									<event>
+										<text>"T#tally epic! J#st need some missiles and I'll be home free! You're g#od for it, right?"</text>
+										<item_modify>
+										<item type="drones" min="-10" max="-4" />
+										</item_modify>
+										<choice hidden="false">
+										<text>Give them even more missiles... again...</text>			<!--Level 6a. Anger:0 -->
+										<event>
+											<text>"Booyah! Th#t's all I needed! Th#nks bro!" The Scav begins preparing to jump.</text>
+											<item_modify>
+												<item type="missiles" min="-14" max="-6" />
+											</item_modify>
+											<choice hidden="true">
+												<text>Prepare to leave.</text>							<!--[Finale a]. Anger:0-->
+												<event>
+													<text>You follow the Scav's lead and get ready to jump away. At least you were able to help that Scav...</text>
+												</event>
+											</choice>
+											<choice hidden="true">
+												<text>Hey! Where's our payment?</text>					<!--[Finale b]. Anger:0-->
+												<event>
+													<text>"Huh? Why w#uld I reward you? Dude, y#u play too many v#deo games." The Scav turns off its comms and continues preparing to jump. You reluctantly follow suit.</text>
+												</event>
+											</choice>
+										</event>
+										</choice>
+										<choice hidden="true">
+										<text>Apologize, wish them luck, and continue on.</text>		<!--Level 6b. Anger:0 -->
+										<event>
+											<text>"As if! Th#t's really funny, but y#u're actually gonna give m# the- =#######= -right?"</text>
+											<choice hidden="true">
+												<text>Actually give them the missiles.</text>			<!--Level 7a [End]. Anger:0-->
+												<event>
+													<text>"I kn#w you were g#od for it! Thanks bro!" The Scav turns off its comms and starts preparing to jump away. Oh well.</text>
+													<item_modify>
+													<item type="missiles" min="-14" max="-6" />
+													</item_modify>
+												</event>
+											</choice>
+											<choice hidden="true">
+												<text>Tell them you aren't joking.</text>				<!--Level 7b [End]. Anger:0-->
+												<event>
+													<text>"Oh. I see. W#ll you kn#w what? You D#SERVE the R#bels wiping y#u out. Also y#u're ship is so ugly it m#kes me want to ralph. I h#te you." The Scav continues throwing crackled insults at you, but eventually you turn off the comms and prepare to jump away. There's no point even trying to argue with them.</text>
+												</event>
+											</choice>
+										</event>
+										</choice>
+									</event>
+								</choice>
+								<choice hidden="true">
+									<text>Apologize, wish them luck, and continue on.</text>			<!--Level 5b [End]. Anger:0-->
+									<event>
+										<text>"Exc#se me? I th#ught the Federation w#s supposed to H#LP pe#ple in need. Gu#ss that was a lie."</text>
+									</event>
+								</choice>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [End]. Anger:0-->
+							<event>
+								<text>"Heartless m#ch? I'm l#terally STRANDED h#re and you're j#st l#tting me- =###########= -I see h#w it is."</text>
+							</event>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Apologize, wish them luck, and continue on.</text>						<!--Level 3b [End]. Anger:0-->
+						<event>
+							<text>"W#w. THAT's wh#re you draw the line. Ok d#de. I alw#ys knew the Fed#ration were a bunch of cheapsk#tes."</text>
+						</event>
+					</choice>
+				</event>
+				</choice>
+				<choice hidden="true">
+				<text>Apologize, wish them luck, and continue on.</text>								<!--Level 2b [End]. Anger:0-->
+				<event>
+					<text>"Oh, I see h#w it is... I d#dn't even want parts fr#m a poser like y#u anyway."</text>
+				</event>
+				</choice>
+				<choice hidden="true" req="teleporter" lvl="1">
+				<text>(Teleporter) Help salvage the parts they used.</text>								<!--Level 2c. Anger:1-->
+				<event>
+					<text>You beam aboard the Scav ship and manage to get a handful of usable drone parts from their engines. The Scav appears apathetic. "N#ce. I c#uld also #se some missiles. I l#st them- =########= -wh#t do you say?"</text>
+					<choice hidden="false">
+						<text>Give them some missiles too.</text>										<!--Level 3a. Anger:1-->
+						<event>
+							<text>"Thank- =######= -Ok, I n#ed scr#p too. For... f#ture repairs."</text>
+							<item_modify>
+							<item type="missiles" min="-7" max="-3" />
+							</item_modify>
+							<choice hidden="false">
+							<text>Give them some scrap.</text>											<!--Level 4a [End]. Anger:1-->
+							<event>
+								<text>"Thank G#d." The Scav turns off his comms in a huff. You wonder what made it so angry.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [End]. Anger:1-->
+							<event>
+								<text>"Exc#se me? I th#ught the Federation w#s supposed to H#LP pe#ple in need. Gu#ss that was a lie." As the Scav prepares to jump away, you wonder if there might have been other ways to help the Scav.</text>
+							</event>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Apologize, wish them luck, and continue on.</text>						<!--Level 3b [End]. Anger:1-->
+						<event>
+							<text>"Heartless m#ch? I'm l#terally STRANDED h#re and you're j#st l#tting me- =###########= -I see h#w it is." As the Scav prepares to jump away, you wonder if there might have been other ways to help the Scav.</text>
+						</event>
+					</choice>
+					<choice hidden="true" req="weapons" lvl="4">
+						<text>(Advanced Weapons) Offer to escort the ship to the nearest store.</text>	<!--Level 3c. Anger:2-->
+						<event>
+							<text>For some reason, the Scav seems annoyed by this suggestion. "Fine! Th#t works too I gu#ss. But I can't go anywh#re without some scrap first."</text>
+							<choice hidden="false">
+							<text>Give them even more scrap...</text>									<!--Level 4a. Anger:2-->
+							<event>
+								<text>"Thank G#d." The Scav turns off his comms in a huff and prepares to jump away. You wonder what made it so angry.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [Fight]. Anger:2-->
+							<event>
+								<text>The Scav's tone suddenly becomes angry, "Oh no y#u- =######= d#n't! You've w#sted too much of my l#fe to just w#lk away with n#thing." The Scav begins to power its weapons!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+							<choice hidden="true" req="engi">
+							<text>(Engi Crew) Suggest looking at their engine again.</text>				<!--Level 4c [MAX ANGER]. Anger:3-->
+							<event>
+								<text>The Scav explodes with rage, and begins screaming incoherently. "WHY W#N'T YOU JUST G#VE ME YOUR- =########= -STUFF Y#U- =#################= " The Scav's vocalizer squeals and crackles as it struggles to keep up with the Scav's rapid string of insults. Suddenly, the Scav turns its weapons on your ship!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+						</event>
+					</choice>
+				</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>Apologize, wish them luck, and continue on.</text>									<!--Level 1b [End]. Anger:0-->
+			<event>
+				<text>"Oh. Th#t's cool. We'll j#st wait here."</text>
+			</event>
+		</choice>
+		<choice hidden="true" req="engi">
+			<text>(Engi Crew) Perhaps their design is flawed.</text>									<!--Level 1c. Anger:1-->
+			<event>
+				<text>Your crew-member begins walking the Scav through a solution, and very quickly their ship powers up. "Cool. B#t I'm als# in desperate n#ed for some dr#ne parts. I us#d all mine trying to fix the #ngine. C#uld you help?"</text>
+				<choice hidden="false">
+				<text>Give them some drone parts too.</text>											<!--Level 2a. Anger:1-->
+				<event>
+					<text>"Ok. I #lso lost all my m#ssiles wh#n I- =#########= so c#uld you help me #ut man?"</text>
+					<item_modify>
+						<item type="drones" min="-5" max="-2" />
+					</item_modify>
+					<choice hidden="false">
+						<text>Give them some missiles too.</text>										<!--Level 3a. Anger:1-->
+						<event>
+							<text>"Ok, th#t's the ticket! All I need is s#me scrap and I'll be g##d to go."</text>
+							<item_modify>
+							<item type="missiles" min="-7" max="-3" />
+							</item_modify>
+							<choice hidden="false">
+							<text>Give them even more scrap...</text>									<!--Level 4a [End]. Anger:1-->
+							<event>
+								<text>"T#tally bad! Well, see y# around!" The Scav turns off its comms and begins to power their FTL systems. You wonder if there might have been other ways to help the Scav.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [End]. Anger:1-->
+							<event>
+								<text>"Exc#se me? I th#ught the Federation w#s supposed to H#LP pe#ple in need. Gu#ss that was a lie." As the Scav prepares to jump away, you wonder if there might have been other ways to help the Scav.</text>
+							</event>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Apologize, wish them luck, and continue on.</text>						<!--Level 3b [End]. Anger:1-->
+						<event>
+							<text>"Heartless m#ch? I'm l#terally STRANDED h#re and you're j#st l#tting me- =###########= -I see h#w it is." As the Scav prepares to jump away, you wonder if there might have been other ways to help the Scav.</text>
+						</event>
+					</choice>
+					<choice hidden="true" req="weapons" lvl="4">
+						<text>(Advanced Weapons) Offer to escort the ship to the nearest store.</text>	<!--Level 3c. Anger:2-->
+						<event>
+							<text>For some reason, the Scav seems annoyed by this suggestion. "Fine! Th#t works too I gu#ss. But I can't go anywh#re without some scrap first."</text>
+							<choice hidden="false">
+							<text>Give them even more scrap...</text>									<!--Level 4a. Anger:2-->
+							<event>
+								<text>"Thank G#d." The Scav turns off his comms in a huff and prepares to jump away. You wonder what made it so angry.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [Fight]. Anger:2-->
+							<event>
+								<text>The Scav's tone suddenly becomes angry, "Oh no y#u- =######= d#n't! You've w#sted too much of my l#fe to just w#lk away with n#thing." The Scav begins to power its weapons!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+							<choice hidden="true" req="engi">
+							<text>(Engi Crew) Suggest looking at their engine again.</text>				<!--Level 4c [MAX ANGER]. Anger:3-->
+							<event>
+								<text>The Scav explodes with rage, and begins screaming incoherently. "WHY W#N'T YOU JUST G#VE ME YOUR- =########= -STUFF Y#U- =#################= " The Scav's vocalizer squeals and crackles as it struggles to keep up with the Scav's rapid string of insults. Suddenly, the Scav turns its weapons on your ship!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+						</event>
+					</choice>
+				</event>
+				</choice>
+				<choice hidden="true">
+				<text>Apologize, wish them luck, and continue on.</text>								<!--Level 2b [End]. Anger:1-->
+				<event>
+					<text>"Cool, I gu#ss I'll just die out h#re. Th#nks buddy." For someone who just needed drone parts, the Scav seemed extremely annoyed. You wonder if there might have been other ways to help the Scav.</text>
+				</event>
+				</choice>
+				<choice hidden="true" req="teleporter" lvl="1">
+				<text>(Teleporter) Help salvage the parts they used.</text>								<!--Level 2c. Anger:2-->
+				<event>
+					<text>You beam aboard the Scav ship and manage to get a handful of usable drone parts from their engines. The Scav doesn't appear happy at all. "W#w ok. I n#ed missiles too. Do y#u have some wonder-gadget f#r that too, hmmm?" It then shoos you away back to your own ship.</text>
+					<choice hidden="false">
+						<text>Give them some missiles too.</text>										<!--Level 3a. Anger:2-->
+						<event>
+							<text>"Thank- =######= -Ok, I n#ed scr#p too. For... f#ture repairs."</text>
+							<item_modify>
+							<item type="missiles" min="-7" max="-3" />
+							</item_modify>
+							<choice hidden="true">
+							<text>Give them some scrap.</text>											<!--Level 4a. Anger:2-->
+							<event>
+								<text>"Thank G#d." The Scav turns off his comms in a huff. You wonder what made it so angry.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [Fight]. Anger:2-->
+							<event>
+								<text>The Scav's tone suddenly becomes angry, "Oh no y#u- =######= d#n't! You've w#sted too much of my l#fe to just w#lk away with this j#nk!" The Scav begins to power its weapons!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Apologize, wish them luck, and continue on.</text>						<!--Level 3b [Fight]. Anger:2-->
+						<event>
+							<text>The Scav's tone suddenly becomes angry, "Oh no y#u- =######= d#n't! You've w#sted too much of my l#fe to just w#lk away with n#thing." The Scav begins to power its weapons!</text>
+							<ship hostile="true" />
+						</event>
+					</choice>
+					<choice hidden="true" req="weapons" lvl="4">
+						<text>(Advanced Weapons) Offer to escort the ship to the nearest store.</text>	<!--Level 3c [MAX ANGER]. Anger:3-->
+						<event>
+							<text>The Scav is absolutely furious, and screams at you, "OH. MY. G#D. YOU- =####################= ". The Scav's vocalizer crackles and fizzes violently as it fails to modulate the string of insults. "ALL I W#NTED WAS S#ME- =#########= -EASY SCRAP, B#T NO!! MR. F#DERATION H#D TO HAVE ALLLL THE- =######= -ANSW#RS!" The Scav's ship powers up their weapons!</text>
+							<ship hostile="true" />
+						</event>
+					</choice>
+				</event>
+				</choice>
+			</event>
+		</choice>
+		<choice hidden="false" req="REPAIR_ARM">
+			<text>(Repair Arm) Fix their ship for them.</text>											<!--Level 1d. Anger:1-->
+			<event>
+				<text>You're able to repair their engines with minimal scrap. "Cool. B#t I'm als# in desperate n#ed for some dr#ne parts. C#uld you help?"</text>
+				<item_modify>
+				<item type="scrap" min="-15" max="-5" />
+				</item_modify>
+				<choice hidden="false">
+				<text>Give them some drone parts too.</text>											<!--Level 2a. Anger:1-->
+				<event>
+					<text>"Ok. I #lso lost all my m#ssiles wh#n I- =#########= so c#uld you help me #ut man?"</text>
+					<item_modify>
+						<item type="drones" min="-5" max="-2" />
+					</item_modify>
+					<choice hidden="false">
+						<text>Give them some missiles too.</text>										<!--Level 3a. Anger:1-->
+						<event>
+							<text>"Ok, th#t's the ticket! All I need is s#me scrap and I'll be g##d to go."</text>
+							<item_modify>
+							<item type="missiles" min="-7" max="-3" />
+							</item_modify>
+							<choice hidden="false">
+							<text>Give them even more scrap...</text>									<!--Level 4a [End]. Anger:1-->
+							<event>
+								<text>"T#tally bad! Well, see y# around!" The Scav turns off its comms and begins to power their FTL systems. You wonder if there might have been other ways to help the Scav.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [End]. Anger:1-->
+							<event>
+								<text>"Exc#se me? I th#ught the Federation w#s supposed to H#LP pe#ple in need. Gu#ss that was a lie." As the Scav prepares to jump away, you wonder if there might have been other ways to help the Scav.</text>
+							</event>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Apologize, wish them luck, and continue on.</text>						<!--Level 3b [End]. Anger:1-->
+						<event>
+							<text>"Heartless m#ch? I'm l#terally STRANDED h#re and you're j#st l#tting me- =###########= -I see h#w it is." As the Scav prepares to jump away, you wonder if there might have been other ways to help the Scav.</text>
+						</event>
+					</choice>
+					<choice hidden="true" req="weapons" lvl="4">
+						<text>(Advanced Weapons) Offer to escort the ship to the nearest store.</text>	<!--Level 3c. Anger:2-->
+						<event>
+							<text>For some reason, the Scav seems annoyed by this suggestion. "Fine! Th#t works too I gu#ss. But I can't go anywh#re without some scrap first."</text>
+							<choice hidden="false">
+							<text>Give them even more scrap...</text>									<!--Level 4a. Anger:2-->
+							<event>
+								<text>"Thank G#d." The Scav turns off his comms in a huff and prepares to jump away. You wonder what made it so angry.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [Fight]. Anger:2-->
+							<event>
+								<text>The Scav's tone suddenly becomes angry, "Oh no y#u- =######= d#n't! You've w#sted too much of my l#fe to just w#lk away with n#thing." The Scav begins to power its weapons!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+							<choice hidden="true" req="engi">
+							<text>(Engi Crew) Suggest looking at their engine again.</text>				<!--Level 4c [MAX ANGER]. Anger:3-->
+							<event>
+								<text>The Scav explodes with rage, and begins screaming incoherently. "WHY W#N'T YOU JUST G#VE ME YOUR- =########= -STUFF Y#U- =#################= " The Scav's vocalizer squeals and crackles as it struggles to keep up with the Scav's rapid string of insults. Suddenly, the Scav turns its weapons on your ship!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+						</event>
+					</choice>
+				</event>
+				</choice>
+				<choice hidden="true">
+				<text>Apologize, wish them luck, and continue on.</text>								<!--Level 2b [End]. Anger:1-->
+				<event>
+					<text>"Cool, I gu#ss I'll just die out h#re. Th#nks buddy." For someone who just needed drone parts, the Scav seemed extremely annoyed. You wonder if there might have been other ways to help the Scav.</text>
+				</event>
+				</choice>
+				<choice hidden="true" req="teleporter" lvl="1">
+				<text>(Teleporter) Help salvage the parts they used.</text>								<!--Level 2c. Anger:2-->
+				<event>
+					<text>You beam aboard the Scav ship and manage to get a handful of usable drone parts from their engines. The Scav doesn't appear happy at all. "W#w ok. I n#ed missiles too. Do y#u have some wonder-gadget f#r that too, hmmm?" It then shoos you away back to your own ship.</text>
+					<choice hidden="false">
+						<text>Give them some missiles too.</text>										<!--Level 3a. Anger:2-->
+						<event>
+							<text>"Thank- =######= -Ok, I n#ed scr#p too. For... f#ture repairs."</text>
+							<item_modify>
+							<item type="missiles" min="-7" max="-3" />
+							</item_modify>
+							<choice hidden="false">
+							<text>Give them some scrap.</text>											<!--Level 4a. Anger:2-->
+							<event>
+								<text>"Thank G#d." The Scav turns off his comms in a huff. You wonder what made it so angry.</text>
+								<item_modify>
+									<item type="scrap" min="-25" max="-25" />
+								</item_modify>
+							</event>
+							</choice>
+							<choice hidden="true">
+							<text>Apologize, wish them luck, and continue on.</text>					<!--Level 4b [Fight]. Anger:2-->
+							<event>
+								<text>The Scav's tone suddenly becomes angry, "Oh no y#u- =######= d#n't! You've w#sted too much of my l#fe to just w#lk away with this j#nk!" The Scav begins to power its weapons!</text>
+								<ship hostile="true" />
+							</event>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Apologize, wish them luck, and continue on.</text>						<!--Level 3b [Fight]. Anger:2-->
+						<event>
+							<text>The Scav's tone suddenly becomes angry, "Oh no y#u- =######= d#n't! You've w#sted too much of my l#fe to just w#lk away with n#thing." The Scav begins to power its weapons!</text>
+							<ship hostile="true" />
+						</event>
+					</choice>
+					<choice hidden="true" req="weapons" lvl="4">
+						<text>(Advanced Weapons) Offer to escort the ship to the nearest store.</text>	<!--Level 3c [MAX ANGER]. Anger:3-->
+						<event>
+							<text>The Scav is absolutely furious, and screams at you, "OH. MY. G#D. YOU- =####################= ". The Scav's vocalizer crackles and fizzes violently as it fails to modulate the string of insults. "ALL I W#NTED WAS S#ME- =#########= -EASY SCRAP, B#T NO!! MR. F#DERATION H#D TO HAVE ALLLL THE- =######= -ANSW#RS!" The Scav's ship powers up their weapons!</text>
+							<ship hostile="true" />
+						</event>
+					</choice>
+				</event>
+				</choice>
+			</event>
+		</choice>
+	</event>
+	<ship name="SCAV_CIV" auto_blueprint="SHIPS_CIRCLE" />		<!--TODO: Add a reward for killing the greedy Scav.-->
 
 	<!--@author Subset Games-->
 

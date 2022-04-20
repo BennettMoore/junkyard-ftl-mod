@@ -12,7 +12,7 @@
 -->
 
 	<crewBlueprint name="scav">
-		<desc>The 'Scavengers' build their ships from other race's junk, and are well equpped to deal with any dangerous repair jobs that may spring up.</desc>
+		<desc>The 'Scavengers' build their ships from other race's junk, and are well equpped to deal with any dangerous repair jobs that may spring up. If only they'd use better vocalizers.</desc>
 		<cost>50</cost>
 		<bp>2</bp>
 		<title>Scavenger</title>
