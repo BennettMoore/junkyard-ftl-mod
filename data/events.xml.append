@@ -1450,6 +1450,54 @@
 		<text id="event_SCAV_VIRUS_REBORN_text"/>
 		<crewMember amount="1" class="engi" all_skills="2" id="name_Virus"/>
 	</event>
+	
+	<!--
+	*********
+			QUESTS!
+		-
+	**********
+	-->
+	
+<!--@author Bennett Moore-->
+	
+	<event name="SCAV_RARE_PARTS">
+	   <text>As you arrive at the distress beacon, a Scav frantically hails you, "D#DE! Y#u've gotta h#lp me! My b#ddy just told me about s#me- =##########= - it saw just SITTING in a ne#rby tr#sh cluster. C#n you help m# out? I c#n even get you some f#el to get there!"</text>
+	   <ship load="SCAV_RARE_SHIP" hostile="false" />
+	   <choice hidden="false">
+		  <text>Accept.</text>
+		  <event>
+			 <text>"Oh m#n, that's great! I'll g#ve you the co-ords!"</text>
+			 <quest event="SCAV_RARE_PARTS_QUEST" />
+			 <item_modify>
+				<item type="fuel" min="2" max="2" />
+			 </item_modify>
+		  </event>
+	   </choice>
+	   <choice hidden="true">
+		  <text>Refuse.</text>
+		  <event>
+			 <text>You decide that hunting for parts is not worthy of a distress signal. "Ok. Th#t's alright."</text>
+		  </event>
+	   </choice>
+	</event>
+	<ship name="SCAV_RARE_SHIP" auto_blueprint="SHIPS_CIRCLE" />
+	
+	<event name="SCAV_RARE_PARTS_QUEST">
+	   <text>Once you arrive at the beacon, you see a pirate guarding a cluster of trash. "Keep moving Fed. We're not looking for a fight." </text>
+	   <ship load="RARE_PARTS_PIRATE" hostile="false" />
+	   <choice hidden="true">
+		  <text>Attack the pirate.</text>
+		  <event>
+			 <text>You train your weapons on the pirate. Prepare to fight!</text>
+			 <ship hostile="true" />
+		  </event>
+	   </choice>
+	   <choice hidden="true">
+		  <text>Continue...</text>
+		  <event />
+	   </choice>
+	</event>
+	<ship name="RARE_PARTS_PIRATE" auto_blueprint="SHIPS_PIRATE" />
 
 	<!--
 	*********
@@ -1458,7 +1506,7 @@
 	**********
 	-->
 
-<!--@author Bennett Moore-->
+
 	
 	<event name="SCAV_SCAVENGING_QUEST" unique="true">				<!--Unlocks the Junkyard-->
 	   <text>As you approach the beacon you are hailed by a young Scav in a repurposed mining ship, painted in Federation colors. It's modulated English crackles and breaks over the comms: "Woah!! Is th#t a real =####= class-sh#p? Wait... y#u guys must be F#deration! RADICAL!!! I r##lly need- =###############= -and I'll even pay! I got- =#######= -What do y#u say? Please?"</text>

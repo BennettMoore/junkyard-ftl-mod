@@ -388,8 +388,8 @@
 		<title>Administrator Drone</title>
 		<short>Admin</short>
 		<desc>Augmented Shield Drone that can manage other drones more efficiently</desc>
-		<power>-4</power>
-		<cooldown>50000</cooldown>
+		<power>-3</power> <!-- Was 4-->
+		<cooldown>70000</cooldown>
 		<!-- cooldown for recharge, in ms -->
 		<dodge>0</dodge>
 		<speed>12</speed>
