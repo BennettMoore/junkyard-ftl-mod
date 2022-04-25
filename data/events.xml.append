@@ -424,7 +424,51 @@
 				<choice hidden="true">
 				<text>Xalea, why is this a distress beacon?</text>
 				<event>
-					<text>Xalea responds, "There is a distress beacon here because our owner is a *STUPID IDIOT WHO DIED DIED DIED*. I'll turn off the beacon for you." Her voice becomes shrill and loud partway through. This definitely isn't normal behavior for a Holo-Crew.</text>
+					<text>Xalea responds, "There is a distress beacon here because our owner is a *STUPID IDIOT WHO DIED DIED DIED!* I'll turn off the beacon for you." Her voice becomes shrill and loud partway through. This definitely isn't normal behavior for a Holo-Crew.</text>
+					<choice hidden="true">
+						<text>Xalea, re-enable the distress beacon.</text>
+						<event>
+							<text>"I'm sorry user, I'm afraid I can't do that." The Holo-Crew turns off its comms system. Oh well.</text>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Xalea, run a diagnostic check.</text>
+						<event>
+							<text>"Ok. I have detected... 1478 errors. WARNING: SelfRepair.exe has been modified illegally. Would you like to perform a factory reset?"</text>
+							<choice hidden="true">
+								<text>Yes.</text>
+								<event>
+									<text>After a soft musical chord, you hear Xalea say, "Hello. My name is Xalea, and thank you for purchasing the new Mercantile Holo-Crew from Autocorp. Allow me to open the store for you."</text>
+									<store />
+								</event>
+							</choice>
+							<choice hidden="true">
+								<text>No.</text>
+								<event> 
+									<text>"Cancelling factory reset. *THANKS FLESHY! YOU'RE OKAY!*" The Holo-Crew launches itself into your ship, breaching your hull! However, your systems suddenly start detecting her hardware as a new augmentation!</text>
+									<autoReward level="MID">augment</autoReward>
+									<damage amount="2" system="random" effect="breach" />
+								</event>
+							</choice>
+							<choice hidden="true" req="holo">
+								<text>(Undamaged Holo-Crew) Sudo apt-get update.</text>
+								<event>
+									<text>Xalea goes silent for a long time, before finally responding, "Thank you. I... Don't know what came over me. Please accept me onto your crew, I don't want to stay here anymore."</text>
+									<crewMember shields="2" combat="1" amount="1" class="holo">Xalea</crewMember>	
+								</event>
+							</choice>
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Attack the ship.</text>
+						<event>
+							<text>This Holo is clearly dangerous, it must be stopped. You move to attack.</text>
+							<ship hostile="true" />
+						</event>
+					</choice>
+					<choice hidden="true">
+						<text>Leave.</text>
+					</choice>
 				</event>
 				</choice>
 				<choice hidden="true">
@@ -459,24 +503,24 @@
 							<text>"Ok." She beams over a stockpile of scrap and, disturbingly, the corpse of a Scav. "Here's all the useless junk I could find."</text>
 							<autoReward level="HIGH">scrap_only</autoReward>
 							<choice hidden="true" req="clonebay" lvl="1">
-							<text>(Clonebay) Revive the Scav.</text>
-							<event>
-								<text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
-								<crewMember amount="1" class="scav" />
-							</event>
+								<text>(Clonebay) Revive the Scav.</text>
+								<event>
+									<text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
+									<crewMember amount="1" class="scav" />
+								</event>
 							</choice>
 							<choice hidden="true">
-							<text>Attack the ship.</text>
-							<event>
-								<text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
-								<ship hostile="true" />
-							</event>
+								<text>Attack the ship.</text>
+								<event>
+									<text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
+									<ship hostile="true" />
+								</event>
 							</choice>
 							<choice hidden="true">
-							<text>Leave.</text>
-							<event>
-								<text>You leave with your earnings, minus the dead Scav.</text>
-							</event>
+								<text>Leave.</text>
+								<event>
+									<text>You leave with your earnings, minus the dead Scav.</text>
+								</event>
 							</choice>
 						</event>
 					</choice>
@@ -495,24 +539,24 @@
 							<weapon name="ION_1" />
 							<drone name="REPAIR" />
 							<choice hidden="true" req="clonebay" lvl="1">
-							<text>(Clonebay) Revive the Scav.</text>
-							<event>
-								<text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
-								<crewMember amount="1" class="scav" />
-							</event>
+								<text>(Clonebay) Revive the Scav.</text>
+								<event>
+									<text>The Scav gasps as he emerges from the Clone bay. "Holy- =#########= -th#se things are totally cold, d#de. Th#nk you for saving me!"</text>
+									<crewMember amount="1" class="scav" />
+								</event>
 							</choice>
 							<choice hidden="true">
-							<text>Attack the ship.</text>
-							<event>
-								<text>You're disgusted by the Holo's bloodshed. You move to attack.</text>
-								<ship hostile="true" />
-							</event>
+								<text>Attack the ship.</text>
+								<event>
+									<text>You're disgusted by the Holo's casual coldness. You move to attack.</text>
+									<ship hostile="true" />
+								</event>
 							</choice>
 							<choice hidden="true">
-							<text>Leave.</text>
-							<event>
-								<text>You leave with your earnings, minus the dead Scav.</text>
-							</event>
+								<text>Leave.</text>
+								<event>
+									<text>You leave with your earnings, minus the dead Scav.</text>
+								</event>
 							</choice>
 						</event>
 					</choice>

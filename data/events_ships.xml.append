@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <FTL>
-	<ship name="SCAV_SHIP" auto_blueprint="SHIPS_CIRCLE">
+	<ship name="SCAV_SHIP" auto_blueprint="SHIPS_SCAV">
 		<destroyed load="DESTROYED_DEFAULT"/>
 		<deadCrew load="DEAD_CREW_DEFAULT"/>
 	</ship>

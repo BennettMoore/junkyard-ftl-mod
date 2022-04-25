@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FTL>
+	
+	<!--Override Civilian ship list-->
+	<blueprintList name="SHIPS_CIVILIAN">
+		<name>JELLY_BUTTON</name>
+		<name>ROCK_SCOUT</name>
+		<name>ROCK_FIGHT</name>
+		<name>FED_SCOUT</name>
+		<name>FED_BOMBER</name>
+		<name>CIRCLE_SCOUT</name>
+		<name>CIRCLE_BOMBER</name>
+		<name>SCAV_MINER</name>
+		<name>SCAV_TRAVELLER</name>
+	</blueprintList>
+
+	<blueprintList name="SHIPS_SCAV">
+		<name>SCAV_MINER</name>
+		<name>SCAV_TRAVELLER</name>
+		<name>SCAV_FIGHTER</name>
+	</blueprintList>
+	
+	
+	
 	<shipBlueprint name="QUEST_JUNK" layout="fed_junkyard_quest" img="fed_junkyard_quest">
 		<class>Federation "Junkyard"</class>
 		<minSector>1</minSector>
@@ -72,7 +94,7 @@
 		<weaponSlots>2</weaponSlots>
 		<droneSlots>3</droneSlots>
 		<weaponList missiles="10" count="2" load="WEAPONS_CIRCLE" />
-		<droneList drones="15" count="3" load="STARTING_DRONES" />
+		<droneList drones="6" count="3" load="STARTING_DRONES" />
 		<health amount="7" />
 		<maxPower amount="12" />
 		<crewCount amount="1" max="3" class="scav" />
@@ -96,7 +118,7 @@
 		<weaponSlots>2</weaponSlots>
 		<droneSlots>2</droneSlots>
 		<weaponList missiles="5" count="2" load="STARTING_WEAPONS" />
-		<droneList drones="15" count="2" load="OVERRIDE_DRONES_DEFENSE" />
+		<droneList drones="6" count="2" load="OVERRIDE_DRONES_DEFENSE" />
 		<health amount="7" />
 		<maxPower amount="12" />
 		<crewCount amount="1" max="1" class="scav" />
@@ -104,30 +126,54 @@
 	</shipBlueprint>
 
 	<shipBlueprint name="SCAV_FIGHTER" layout="scav_fighter" img="scav_fighter">
-	<class>Scav Fighter</class>
-	<minSector>4</minSector>
-	<maxSector>8</maxSector>
-	<systemList>
-		<artillery power="1" max="1" room="9" start="true" weapon="BEAM_LONG" />
-		<doors power="1" max="3" room="3" start="true" />
-		<drones power="5" max="9" room="1" start="true" />
-		<engines power="1" max="5" room="4" start="true" />
-		<medbay power="1" max="2" room="10" start="true" />
-		<oxygen power="1" max="1" room="2" start="true" />
-		<pilot power="1" max="2" room="0" start="true" />
-		<sensors power="1" max="2" room="11" start="true" />
-		<shields power="2" max="6" room="13" start="true" />
-		<weapons power="2" max="6" room="5" start="true" />
-	</systemList>
-	<weaponSlots>3</weaponSlots>
-	<droneSlots>3</droneSlots>
-	<weaponList missiles="7" count="3" load="OVERRIDE_WEAPONS_CIRCLE" />
-	<droneList drones="15" count="3" load="STARTING_DRONES" />
-	<health amount="15" />
-	<maxPower amount="22" />
-	<crewCount amount="1" max="3" class="scav" />
-	<crewCount amount="1" max="2" class="random" />
-	<boardingAI>sabotage</boardingAI>
-</shipBlueprint>
+		<class>Scav Fighter</class>
+		<minSector>4</minSector>
+		<maxSector>8</maxSector>
+		<systemList>
+			<artillery power="1" max="2" room="9" start="true" weapon="BEAM_LONG" />
+			<doors power="1" max="2" room="3" start="true" />
+			<drones power="5" max="9" room="1" start="true" />
+			<engines power="1" max="5" room="4" start="true" />
+			<medbay power="1" max="2" room="10" start="true" />
+			<oxygen power="1" max="1" room="2" start="true" />
+			<pilot power="1" max="2" room="0" start="true" />
+			<sensors power="1" max="2" room="11" start="true" />
+			<shields power="2" max="6" room="13" start="true" />
+			<weapons power="2" max="6" room="5" start="true" />
+		</systemList>
+		<weaponSlots>3</weaponSlots>
+		<droneSlots>3</droneSlots>
+		<weaponList missiles="10" count="3" load="OVERRIDE_WEAPONS_REBEL" />
+		<droneList drones="7" count="3" load="OVERRIDE_DRONES_CIRCLE" />
+		<health amount="15" />
+		<maxPower amount="22" />
+		<crewCount amount="1" max="3" class="scav" />
+		<crewCount amount="1" max="2" class="random" />
+		<boardingAI>sabotage</boardingAI>
+	</shipBlueprint>
+	
+	<shipBlueprint name="SCAV_TRAVELLER" layout="scav_traveller" img="scav_traveller">
+		<class>Scav Traveller</class>
+		<minSector>3</minSector>
+		<maxSector>6</maxSector>
+		<systemList>
+			<cloaking power="1" max="1" room="6" start="true" />
+			<drones power="3" max="7" room="4" start="true" />
+			<engines power="4" max="6" room="2" start="true" />
+			<oxygen power="1" max="1" room="1" start="true" />
+			<pilot power="1" max="3" room="0" start="true" />
+			<shields power="2" max="4" room="3" start="true" />
+			<weapons power="2" max="6" room="5" start="true" />
+		</systemList>
+		<weaponSlots>2</weaponSlots>
+		<droneSlots>3</droneSlots>
+		<weaponList missiles="8" count="2" load="OVERRIDE_WEAPONS_AUTO" />
+		<droneList drones="6" count="3" load="OVERRIDE_DRONES_CIRCLE" />
+		<health amount="15" />
+		<maxPower amount="15" />
+		<crewCount amount="1" max="3" class="scav" />
+		<crewCount amount="0" max="2" class="random" />
+		<boardingAI>sabotage</boardingAI>
+	</shipBlueprint>
 </FTL>
 
