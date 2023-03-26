@@ -355,8 +355,8 @@
 					  <event>
 						 <text>"Yes. Will join." The Lanius simply stand around, waiting to be given orders.</text>
 						 <crewMember combat="1" amount="1" class="anaerobic" />
-						 <crewMember combat="1" amount="1" class="anaerobic" />
-						 <crewMember combat="1" amount="1" class="anaerobic" />
+						 <crewMember pilot="1" amount="1" class="anaerobic" />
+						 <crewMember repair="1" amount="1" class="anaerobic" />
 					  </event>
 				   </choice>
 				   <choice hidden="true">
@@ -681,6 +681,9 @@
 		</event>
 		<event>
 			<text>"Huh? D#de, you're j#king, right? I d#n't have anyth#ng exc#pt enough fu#l to get me h#me."</text>
+		</event>
+		<event>
+			<text>"Um... #k, h#re's some... l#ftover- =######= I guess. I d#n't really have anything else." The Scav beams over a hodge-podge of random wires, bits of metal, and trash. None of it appears to be useful.</text>
 		</event>
 		<event>
 			<text>"Y#ah dude! I've g#t some h#memade missiles I c#uld give you! L#t me be#m it over!" As the Scav teleports the missiles to your ship, something sets them off, damaging your hull!</text>
@@ -1137,7 +1140,7 @@
 			</event>
 		</choice>
 	</event>
-	<ship name="SCAV_CIV" auto_blueprint="SHIPS_CIRCLE" />		<!--TODO: Add a reward for killing the greedy Scav.-->
+	<ship name="SCAV_CIV" auto_blueprint="SHIPS_SCAV" />		<!--TODO: Add a reward for killing the greedy Scav.-->
 
 	<!--@author Subset Games-->
 
@@ -1505,7 +1508,8 @@
 <!--@author Bennett Moore-->
 	
 	<event name="SCAV_RARE_PARTS">
-	   <text>As you arrive at the distress beacon, a Scav frantically hails you, "D#DE! Y#u've gotta h#lp me! My b#ddy just told me about s#me- =##########= - it saw just SITTING in a ne#rby tr#sh cluster. C#n you help m# out? I c#n even get you some f#el to get there!"</text>
+	   <text>As you arrive at the distress beacon, a Scav frantically hails you, "D#DE! Y#u've gotta h#lp me! My b#ddy just told me about s#me- =##########= - it saw just SITTING in a ne#rby tr#sh cluster. C#n you help m# out? I c#n even get y#u some fuel to get there!"</text>
+	   <distressBeacon/>
 	   <ship load="SCAV_RARE_SHIP" hostile="false" />
 	   <choice hidden="false">
 		  <text>Accept.</text>
@@ -1524,7 +1528,7 @@
 		  </event>
 	   </choice>
 	</event>
-	<ship name="SCAV_RARE_SHIP" auto_blueprint="SHIPS_CIRCLE" />
+	<ship name="SCAV_RARE_SHIP" auto_blueprint="SHIPS_SCAV" />
 	
 	<event name="SCAV_RARE_PARTS_QUEST">
 	   <text>Once you arrive at the beacon, you see a pirate guarding a cluster of trash. "Keep moving Fed. We're not looking for a fight." </text>
