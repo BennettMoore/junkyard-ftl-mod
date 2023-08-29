@@ -48,16 +48,11 @@
 		
 		<race name="holo">
 
-			<!--Changes to whatever race you name it (Shhhh, it's an Easter Egg)-->
-			<nameRace transformName="Zoltan" changeIfSame="true">energy</nameRace>
-			<nameRace transformName="Human" changeIfSame="true">human</nameRace>
-			<nameRace transformName="Engi" changeIfSame="true">engi</nameRace>
-			<nameRace transformName="Mantis" changeIfSame="true">mantis</nameRace>
-			<nameRace transformName="Rockman" changeIfSame="true">rock</nameRace>
-			<nameRace transformName="Slug" changeIfSame="true">slug</nameRace>
-			<nameRace transformName="Lanius" changeIfSame="true">anaerobic</nameRace>
-			<nameRace transformName="Crystal" changeIfSame="true">rock</nameRace>
-			
+			<!--Easter Egg Name Transformations-->
+			<nameRace transformName="Pinocchio" changeIfSame="true">human</nameRace>
+			<nameRace transformName="HAL 9000" changeIfSame="true">unstable_holo</nameRace>
+			<nameRace transformName="HAL" changeIfSame="true">unstable_holo</nameRace>
+
 			<moveSpeedMultiplier>1.3</moveSpeedMultiplier>
 			<resistsMindControl>true</resistsMindControl>   
 			<cloneLoseSkills>false</cloneLoseSkills>
@@ -67,6 +62,7 @@
 			<animSheet>holo</animSheet>
 			<repairSpeed>1.5</repairSpeed>
 			<damageMultiplier>1.5</damageMultiplier>
+			<maxHealth>75</maxHealth>
 			<deathEffect>								<!--Spawns an Unstable Holo that cannot be controlled, and has altered abilities-->
 				<transformRace health="0" healthFraction="1.0" deathSound="false">unstable_holo</transformRace>
 			</deathEffect>

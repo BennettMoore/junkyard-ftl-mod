@@ -51,6 +51,7 @@
 			<power>1.3x move speed</power>
 			<power>1.5x repair speed</power>
 			<power>Immune to suffocation and mind control</power>
+			<power>Max health reduced to 75</power>
 			<power>Mint condition</power>
 		</powerList>
 		<colorList>
@@ -80,6 +81,7 @@
 			<power>Uncontrollable</power>
 			<power>Explodes on death, damaging ALL nearby systems and crew</power>
 			<power>Takes constant damage over time</power>
+			<power>Max health reduced to 75</power>
 			<power>1.5x stun duration</power>
 		</powerList>
 		<colorList>
