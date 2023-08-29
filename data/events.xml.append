@@ -142,7 +142,37 @@
 	<textList name="START_BEACON_SCAV">
 		<text>Your sensors indicate a major space-trash cluster in this sector. It's bound to be home to some Scavengers, slowly turning all the junk into usable items. Perhaps you can take advantage of this race's odd fascination.</text>
 		<text>This sector contains an unusually high amount of metal. You doubt much of it will be usable scrap, but it's bound to have attracted Scavengers to it. You can only hope the Scavs have been turning that junk into something you can use against the Rebels.</text>
-		<text>This sector contains an unusually high amount of metal. You doubt much of it will be usable scrap, but it's bound to have attracted Scavengers to it. How they manage to stave off the Lanius is a mystery to you, but thankfully it doesn't affect Federation crew.</text>
+		<text>As you jump to this sector, you see a massive clump of space-trash slowly drifting in the distance, followed by a swarm of mismatched ships. This must be one of the many clusters that the nomadic Scavs call home. Hopefully someone in this sector will have made something useful for your mission.</text>
+	</textList>
+
+	<event name="START_BEACON_SCAV_HOME">
+		<text load="START_BEACON_SCAV_HOME"/>
+	</event>
+	<textList name="START_BEACON_SCAV_HOME">
+		<text>Your scans indicate a very large population of Scavengers in the area. This must be one of the "Scavenger Shipyards", drifting spacedocks that follow especially large trash clusters.</text>
+		<text>According to reports, this sector should currently be the home of a Scav Shipyard. While you're here you should try and see what services the Scavs have to offer. You're unlikely to cross paths with a cluster this large again on your journey.</text>
+		<text>Not bound by planets or star systems, the nomadic Scavs build their civilizations around clusters of slow-moving space-trash. It appears you have intersected with the path of an especially large cluster.</text>
+	</textList>
+
+	<event name="STORE_SCAV">
+		<text load="STORE_SCAV"/>
+		<store/>
+	</event>
+	<textList name="STORE_SCAV">
+		<text>A ramshackle looking space station floats near the beacon, transmitting a message to all nearby ships. "C#me on down to Sc#venger Savings! We've g#t- =##############=, and more! Al# at aff#rdable- =#####=!"</text>
+		<text>A small Scav ship floats, attached to a ball of trash by cables. Your comms crackle to life, "Oh h#y bro! Don't see too m#ny- =####= ar#und here. If you're l#oking for suppl#es I can hook you up f#r some scrap. I've g#t like g#zillions of good p#rts here, just need a little something #xtra to- =######= into #sable st#ff!"</text>
+		<text>A Slug appears to have set up a small shop in this sector, surprisingly. "It is ssso wonderful to sssee another alien ssssuch as myself in this sector! Please, please, take a look at what I have to offer!".</text>
+		<text>A haggered looking pirate stops your ship. Many of their non-critical systems appear to be completely offline, including weapons, and they beg you for any scrap you can spare, offering the contents of their ship in exchange. They seem quite desperate.</text>
+	</textList>
+
+	<event name="NOTHING_SCAV">
+		<text load="NOTHING_SCAV"/>
+	</event>
+	<textList name="NOTHING_SCAV">
+		<text>It's difficult to find anywhere in this sector that is truly devoid of anything, but even by Scav standards this beacon is pretty picked-over. There appears to be nothing nearby.</text>
+		<text>Your jump leads you to what appears to be the empty shell of a first-generation Federation cruiser. As you approach, a young Scav girl angrily crackles into your comms that she found this first, and that she "w#n't give it #ver to some- =######= wannabe!". Probably best to just leave her to her work and continue on your journey.</text>
+		<text>Your jump leads to a large ball of trash swarmed by small Scav ships. As thrilling as it would be to watch them slowly and meticulously pick random pieces of junk out of it, you've got a mission to complete.</text>
+		<text>You discover the site of a battle between a group of pirates and some Scavs. Scans indicate that there is nothing of value in the wreckage, so anything usable must've either been picked up by the surviving pirates, or collected by other Scavs.</text>
 	</textList>
 
 	<!--
@@ -578,7 +608,7 @@
 			</event>
 		</choice>
 	</event>
-	<ship name="SCAV_HOLO" auto_blueprint="SHIPS_CIRCLE" />
+	<ship name="SCAV_HOLO" auto_blueprint="SHIPS_SCAV" />
 	
 	<event name="DISTRESS_SCAV_BROKEN" unique="false">
 		<text>"H#y dude! What's up? My eng#nes totally just- =#######= and if y#u could spare someth#ng I'd- =########= "</text>
@@ -1198,49 +1228,117 @@
 		<augment name="NANO_MEDBAY"/>
 	</event>
 
-
+	<!--@author Bennett Moore-->
 
 	<event name="DISTRESS_SCAV_REACTOR" unique="true">
-		<text id="event_DISTRESS_SCAV_REACTOR_text"/>
+		<text>You arrive at some sort of Scav space station, though it's hard to tell at this point. It seems to have been attacked by a ship, and scans indicate that its core is venting high levels of radioactive material into space.
+		Your comms light up, crackling with the worried voice of a Scav: "Y## HAVE TO H#LP ME DUDE! PLEASE! I C#N PAY WH#TEVER, JUST ST#P MY STATION FROM- =########=" The voice fades into static.</text>
 		<distressBeacon/>
 		<choice hidden="true">
-			<text id="event_DISTRESS_SCAV_REACTOR_c1_choice"/>
-			<event load="DISTRESS_SCAV_REACTOR_LIST1"/>
+			<text>Send a crewmember in to extract the Scav.</text>
+			<event load="DISTRESS_SCAV_REACTOR_SAVE"/>
 		</choice>
 		<choice hidden="true">
-			<text id="event_DISTRESS_SCAV_REACTOR_c2_choice"/>
+			<text>Shoot at the core.</text>
 			<event>
 				<text id="event_DISTRESS_SCAV_REACTOR_c2_text"/>
+				<event load="DISTRESS_SCAV_REACTOR_SHOT"/>
 			</event>
 		</choice>
-		<choice hidden="true" req="sensors" lvl="2">
-			<text id="event_DISTRESS_SCAV_REACTOR_c3_choice"/>
-			<event load="DISTRESS_SCAV_REACTOR_SCAN"/>
+		<choice hidden="true" req="WEAPONS_ION">
+			<text>(Ion Weapon) Try to disable the core.</text>
+			<event load="DISTRESS_SCAV_REACTOR_DISABLE"/>
 		</choice>
-		<choice hidden="true" req="ADV_SCANNERS">
-			<text id="event_DISTRESS_SCAV_REACTOR_c4_choice"/>
-			<event load="DISTRESS_SCAV_REACTOR_SCAN"/>
+		<choice hidden="true" req="teleporter" lvl="2">
+			<text>(Advanced Teleporter) Attempt to teleport the Scav.</text>
+			<event>
+				<text>The Scav appears in your teleporter room and reluctantly thanks you. "I gu#ss this is the b#st that could be- =########= I may n#t have any more st#ff to give, but I can p#y my dues by work#ng on your ship at least."</text>
+				<crewMember engines="1" amount="1" class="scav" />
+			</event>
+		</choice>
+		<choice hidden="true">
+			<text>Leave the Scav to his fate.</text>
+			<event>
+				<text>You prepare to jump away. Your comms crackle with the Scav's desperate cries for help, but there's nothing you could've done to save him. At least, that's what you tell yourself.</text>
+			</event>
 		</choice>
 	</event>
-	<eventList name="DISTRESS_SCAV_REACTOR_LIST1">
+	<eventList name="DISTRESS_SCAV_REACTOR_SAVE">
 		<event>
-			<text id="event_DISTRESS_SCAV_REACTOR_LIST1_1_text"/>
+			<text>Your crew-member attempts to find the Scav, but it's too late. They just barely manage to return to the ship before the station finally explodes.</text>
 		</event>
 		<event>
-			<text id="event_DISTRESS_SCAV_REACTOR_LIST1_2_text"/>
-			<choice hidden="true">
-				<text id="event_DISTRESS_SCAV_REACTOR_LIST1_2_c1_choice"/>
-				<event load="DISTRESS_SCAV_REACTOR_SCAV"/>
+			<text>Your crew-member finds the Scav hurriedly grabbing all sorts of odds and ends as the station continues to deteriorate. Your crew-member manages to drag him back to your ship, where he reluctantly thanks you.
+			"I gu#ss that w#s the best- =#########= I'd b# a fl#ke if I didn't repay you someh#w..."</text>
+			<choice hidden="false">
+				<text>Join my crew.</text>
+				<event>
+					<text>"S#re bro. N#t like I h#ve anywh#re else to- =#########="</text>
+					<crewMember engines="1" amount="1" class="scav" />
+				</event>
 			</choice>
 			<choice hidden="true">
-				<text id="event_DISTRESS_SCAV_REACTOR_LIST1_2_c2_choice"/>
+				<text>Give me some of your tech.</text>
 				<event load="DISTRESS_SCAV_REACTOR_DRONE"/>
 			</choice>
 			<choice hidden="true">
-				<text id="event_DISTRESS_SCAV_REACTOR_LIST1_2_c3_choice"/>
+				<text>Improve my ship.</text>
 				<event>
-					<text id="event_DISTRESS_SCAV_REACTOR_LIST1_2_c3_text"/>
-					<autoReward level="LOW">scrap_only</autoReward>
+					<text>"Of cours# dude. J#st to be safe though, I'll sk#p your reactor, heh."</text>
+					<upgrade amount="1" system="engines" />
+				</event>
+			</choice>
+		</event>
+		<event>
+			<text>Your crew-member finds the Scav hurriedly grabbing all sorts of odds and ends as the station continues to deteriorate. The Scav manages to escape, but your crew-member isn't so fortunate.
+			"I'm so s#rry about your b#ddy- =#########= I'd b# a fl#ke if I didn't repay you someh#w..."</text>
+			<removeCrew>
+				<clone>true</clone>
+				<text>Your crew-member emerges from the cloning bay, complaining of feeling "microwaved". The Scav appears surprised, "Oh! Th#y're ok! Still though, I'm #n your d#bt for sure."</text>
+			</removeCrew>
+			<choice hidden="false">
+				<text>Join my crew.</text>
+				<event>
+					<text>"S#re bro. N#t like I h#ve anywh#re else to- =#########="</text>
+					<crewMember engines="1" amount="1" class="scav" />
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Give me some of your tech.</text>
+				<event load="DISTRESS_SCAV_REACTOR_DRONE"/>
+			</choice>
+			<choice hidden="true">
+				<text>Improve my ship.</text>
+				<event>
+					<text>"Of cours# dude. J#st to be safe though, I'll sk#p your reactor, heh."</text>
+					<upgrade amount="1" system="engines" />
+				</event>
+			</choice>
+		</event>
+	</eventList>
+	<eventList name="DISTRESS_SCAV_REACTOR_SHOT">
+		<event>
+			<text>The reactor explodes, evaporating the base completely. Maybe that wasn't the best idea...</text>
+		</event>
+		<event>
+			<text>Your scans indicate that the source of radiation has stopped, and the base should be safe to enter. The Scav hails you over the comms, "Br#! You j#st trashed my base! 
+			D# you know how l#ng I- =##########= Wh#tever, just l#t me repay you and I'll try to f#x it."</text>
+			<choice hidden="false">
+				<text>Join my crew.</text>
+				<event>
+					<text>"S#riously?? F#ne."</text>
+					<crewMember engines="1" amount="1" class="scav" />
+				</event>
+			</choice>
+			<choice hidden="true">
+				<text>Give me some of your tech.</text>
+				<event load="DISTRESS_SCAV_REACTOR_DRONE"/>
+			</choice>
+			<choice hidden="true">
+				<text>Improve my ship.</text>
+				<event>
+					<text>"I'll try..."</text>
+					<upgrade amount="1" system="engines" />
 				</event>
 			</choice>
 		</event>
@@ -1281,7 +1379,7 @@
 			<autoReward level="LOW">drone</autoReward>
 		</event>
 	</eventList>
-	<event name="DISTRESS_SCAV_REACTOR_SCAN">
+	<event name="DISTRESS_SCAV_REACTOR_DISABLE">
 		<text id="event_DISTRESS_SCAV_REACTOR_SCAN_text"/>
 		<choice hidden="true">
 			<text id="event_DISTRESS_SCAV_REACTOR_SCAN_c1_choice"/>
@@ -1310,7 +1408,7 @@
 
 	-->
 
-
+	<!--@author Subset Games-->
 
 	<event name="SCAV_SEX" unique="true">
 		<text id="event_SCAV_SEX_text"/>

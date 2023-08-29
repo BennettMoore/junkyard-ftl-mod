@@ -12,7 +12,7 @@
 -->
 
 	<crewBlueprint name="scav">
-		<desc>The 'Scavengers' build their ships from other race's junk, and are well equpped to deal with any dangerous repair jobs that may spring up. If only they'd use better vocalizers.</desc>
+		<desc>The 'Scavengers' are a nomadic race fascinated by the trash of other species, and have a knack for building things out of it. Their unique biology is quite useful when performing emergency repairs.</desc>
 		<cost>50</cost>
 		<bp>2</bp>
 		<title>Scavenger</title>
@@ -76,7 +76,7 @@
 			<power>Inflict over double damage in combat</power>
 			<power>1.5x move speed</power>
 			<power>0.2x repair speed</power>
-			<power>Immune to suffocation, mind control</power>
+			<power>Immune to suffocation and mind control</power>
 			<power>Uncontrollable</power>
 			<power>Explodes on death, damaging ALL nearby systems and crew</power>
 			<power>Takes constant damage over time</power>

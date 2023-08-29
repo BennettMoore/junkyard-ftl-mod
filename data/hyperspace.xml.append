@@ -15,7 +15,6 @@
 				<deathSound>engiDeath</deathSound>
 			</deathSounds>
 			<animSheet>scav</animSheet>
-			<animBase>rock</animBase>
 		</race>
 		
 		<race name="unstable_holo">

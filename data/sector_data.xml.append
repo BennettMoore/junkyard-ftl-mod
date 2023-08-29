@@ -37,9 +37,9 @@
 		<blueprint name="scav" rarity="1"/>		<!--Common-->
 	</rarityList>
 	<startEvent>START_BEACON_SCAV</startEvent>
-	<event name="STORE" min="2" max="3"/>
+	<event name="STORE_SCAV" min="2" max="3"/>
 	<event name="ITEMS" min="2" max="2"/>
-	<event name="NOTHING" min="1" max="2"/>
+	<event name="NOTHING_SCAV" min="1" max="2"/>
 	<event name="DISTRESS_BEACON_SCAV" min="1" max="3"/>
 	<event name="NEUTRAL_SCAV" min="4" max="6"/>
 	<event name="HOSTILE_SCAV" min="5" max="7"/>
@@ -68,10 +68,10 @@
 		<blueprint name="human" rarity="2"/>	<!--Uncommon-->
 		<blueprint name="scav" rarity="1"/>		<!--Common-->
 	</rarityList>
-	<startEvent>START_BEACON_SCAV</startEvent>
-	<event name="STORE" min="2" max="3"/>
+	<startEvent>START_BEACON_SCAV_HOME</startEvent>
+	<event name="STORE_SCAV" min="2" max="3"/>
 	<event name="ITEMS" min="2" max="2"/>
-	<event name="NOTHING" min="1" max="2"/>
+	<event name="NOTHING_SCAV" min="1" max="2"/>
 	<event name="DISTRESS_BEACON_SCAV" min="1" max="3"/>
 	<event name="NEUTRAL_SCAV" min="4" max="6"/>
 	<event name="HOSTILE_SCAV" min="5" max="7"/>
